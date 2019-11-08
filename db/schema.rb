@@ -13,16 +13,16 @@
 ActiveRecord::Schema.define(version: 2019_11_08_144854) do
 
   create_table "pets", force: :cascade do |t|
+    t.string "name"
     t.string "species"
-    t.string "breed"
+    t.json "breed"
     t.string "age"
     t.string "gender"
     t.string "size"
     t.string "description"
-    t.string "contact"
-    t.string "photo"
-    t.string "name"
-    t.string "details"
+    t.json "contact"
+    t.json "photo"
+    t.json "details"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -38,9 +38,9 @@ ActiveRecord::Schema.define(version: 2019_11_08_144854) do
 
   create_table "users", force: :cascade do |t|
     t.string "name"
+    t.string "email"
     t.string "gender"
     t.integer "age"
-    t.boolean "current_pet"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
