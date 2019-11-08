@@ -1,13 +1,15 @@
 class SavepetsController < ApplicationController
+  
+  def show
 
-  def index
-    
   end
 
   def create
+
   end
 
   def destroy
+
   end
 
 end

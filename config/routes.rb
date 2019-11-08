@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
 
-  resources :users
+  resources :users, except: [:index, :new, :edit]
 
-  resources :savepets
+  resources :savepets, except: [:index, :new, :edit, :update]
 
-  resources :pets
+  # resources :pets
+  get '/pets' => 'pets#index'
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
