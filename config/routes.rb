@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :users, except: [:index, :new, :edit]
+  resources :users, except: [:new, :edit]
 
   resources :savepets, except: [:index, :new, :edit, :update]
 
