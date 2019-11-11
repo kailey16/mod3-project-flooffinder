@@ -1,6 +1,7 @@
 let signUpButton = document.getElementById('sign_up_button')
 let loginForm = document.getElementById('login-form')
 let submitForm = document.getElementById('submit-form')
+let currentUser
 
 document.addEventListener("DOMContentLoaded", function(){
     signUpButton.addEventListener("click", createUser)
@@ -40,7 +41,7 @@ function signupHandler(event) {
         })
     })
     .then(resp => resp.json())
-    .then(resp => console.log(resp))
+    .then(resp => 
 }
 
 function createUser(event) {
