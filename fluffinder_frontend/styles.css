@@ -5,6 +5,8 @@
     font-size: 75px;
 }
 
+
+
 @import url('https://fonts.googleapis.com/css?family=Numans');
 
 html,body{
@@ -21,11 +23,12 @@ align-content: center;
 }
 
 .card{
-height: 370px;
+height: 300px;
 margin-top: auto;
 margin-bottom: auto;
 width: 400px;
 background-color: rgba(0,0,0,0.5) !important;
+text-align: center;
 }
 
 .social_icon span{
@@ -78,11 +81,13 @@ margin-right: 5px;
 color: black;
 background-color: #FFC312;
 width: 100px;
+
 }
 
 .login_btn:hover{
 color: black;
 background-color: white;
+
 }
 
 .links{
