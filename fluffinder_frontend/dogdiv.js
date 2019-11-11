@@ -115,6 +115,7 @@ function renderDog(dog) {
   image.src = dog.photo[0]["medium"]
   // image.src = "https://image.cnbcfm.com/api/v1/image/105992231-1561667465295gettyimages-521697453.jpeg?v=1561667497&w=740&h=416"
   image.id = "dog-image"
+  image.addEventListener("click", savepetHandler)
 
   const bioDiv = document.createElement("div")
   bioDiv.id = "dog-bio"
