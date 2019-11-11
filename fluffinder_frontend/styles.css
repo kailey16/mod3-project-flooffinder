@@ -16,6 +16,7 @@ font-family: 'Numans', sans-serif;
 
 #panel-container {
     margin: 30px;
+    padding: 50px;
 }
 
 .container{
@@ -98,10 +99,9 @@ margin-left: 4px;
 
 
 /* welcome banner CSS */
-
 #welcome-banner {
   background: #FCBBA5;
-  height: 400px;
+  height: 350px;
 }
 .hidden {
   opacity:0;
@@ -110,7 +110,7 @@ margin-left: 4px;
   font-family: 'Covered By Your Grace';
   font-size:4em;
   text-align:center;
-  height:200px;
+  height: 350px;
   width:600px;
   display:block;
   position:absolute;
@@ -122,7 +122,7 @@ margin-left: 4px;
   margin:auto;
 }
 .console-underscore {
-   display:inline-block;
+  display:inline-block;
   position:relative;
   top:-0.14em;
   left:10px;
@@ -130,13 +130,24 @@ margin-left: 4px;
 
 
 
-/* Dog Div CSS */
+/* Left & Right arrows */
+#left-arrow {
+    float: left;
+}
 
+#right-arrow {
+    float: right;
+}
+
+
+
+/* Dog Div CSS */
 #dog-div {
     background-color: rgb(250, 213, 201) !important;
     width: 600px;
     height: 650px;
-    margin-left: 400px;
+    margin-left: 350px;
+    font-family: 'Overpass Mono', monospace;
 }
 
 #dog-image {
@@ -145,20 +156,79 @@ margin-left: 4px;
 }
 
 .dog-name {
+    font-family: 'Rock Salt', cursive;
     text-align: center;
     margin-top: 30px;
 }
 
-.bio-left {
-    float: left;
-    margin: 20px 0px 0px 20px;
-}
-
 .bio-right {
     float: right;
-    margin: 20px 30px 0px 0px
+    margin: 20px 10px 0px 0px;
+    background-color: white;
+    padding: 10px 10px 0px 10px;
+}
+.bio-left {
+    float: left;
+    margin: 30px 0px 0px 20px;
 }
 
+
+
+/* Gallery container CSS */
+@charset "UTF-8";
+/* :root { font-size: 16px; } */
+/* header, nav, main, section, article, aside, time, footer { display: block; }
+img { max-width: 100%; } */
+
+#gallery-container { 
+    box-sizing: border-box; 
+    height: 400px;
+    margin: 0;
+    padding: 0; 
+}
+
+#gallery-container, ::before, ::after {
+    box-sizing: inherit; 
+}
+
+/* #gallery-container ul {
+    margin:  0 0 15px 25px;
+    padding: 0;
+} */
+#gallery-container ul li { 
+    margin: 0;
+    padding: 0;
+    height: 400px;
+}
+
+#gallery-container ul li img {
+    height: 400px;
+    width: auto;
+}
+
+#gallery-ul {
+    list-style-type: none;
+    margin: 0;
+}
+
+.overflow-x-auto {
+    overflow-x: auto;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-50 {
+    flex: 1 0 50%;
+}
+
+.drag-scroll {
+    cursor: grab;
+    &.is-active {
+        cursor: grabbing;
+    }
+}
 
 
 

@@ -1,67 +1,74 @@
-// document.addEventListener("DONContentLoaded", ()=>{
+// document.addEventListener("DONContentLoaded", ()=>{})
 
 
-// })
+////////// WELCOME BANNER
 
-// function([string1, string2],target id,[color1,color2])    
-consoleText(['Welcome to the FloofFinder!', 'These cute faces need your love!!!'], 'text',['#cd3b36','#cd3b36']);
+(function welcomeBanner() {
+  function consoleText(words, id, colors) {
+    if (colors === undefined) colors = ['#fff'];
+    var visible = true;
+    var con = document.getElementById('console');
+    var letterCount = 1;
+    var x = 1;
+    var waiting = false;
+    var target = document.getElementById(id)
+    target.setAttribute('style', 'color:' + colors[0])
+    window.setInterval(function() {
 
-function consoleText(words, id, colors) {
-  if (colors === undefined) colors = ['#fff'];
-  var visible = true;
-  var con = document.getElementById('console');
-  var letterCount = 1;
-  var x = 1;
-  var waiting = false;
-  var target = document.getElementById(id)
-  target.setAttribute('style', 'color:' + colors[0])
-  window.setInterval(function() {
-
-    if (letterCount === 0 && waiting === false) {
-      waiting = true;
-      target.innerHTML = words[0].substring(0, letterCount)
-      window.setTimeout(function() {
-        var usedColor = colors.shift();
-        colors.push(usedColor);
-        var usedWord = words.shift();
-        words.push(usedWord);
-        x = 1;
-        target.setAttribute('style', 'color:' + colors[0])
+      if (letterCount === 0 && waiting === false) {
+        waiting = true;
+        target.innerHTML = words[0].substring(0, letterCount)
+        window.setTimeout(function() {
+          var usedColor = colors.shift();
+          colors.push(usedColor);
+          var usedWord = words.shift();
+          words.push(usedWord);
+          x = 1;
+          target.setAttribute('style', 'color:' + colors[0])
+          letterCount += x;
+          waiting = false;
+        }, 1000)
+      } else if (letterCount === words[0].length + 1 && waiting === false) {
+        waiting = true;
+        window.setTimeout(function() {
+          x = -1;
+          letterCount += x;
+          waiting = false;
+        }, 1000)
+      } else if (waiting === false) {
+        target.innerHTML = words[0].substring(0, letterCount)
         letterCount += x;
-        waiting = false;
-      }, 1000)
-    } else if (letterCount === words[0].length + 1 && waiting === false) {
-      waiting = true;
-      window.setTimeout(function() {
-        x = -1;
-        letterCount += x;
-        waiting = false;
-      }, 1000)
-    } else if (waiting === false) {
-      target.innerHTML = words[0].substring(0, letterCount)
-      letterCount += x;
-    }
-  }, 120)
-  window.setInterval(function() {
-    if (visible === true) {
-      con.className = 'console-underscore hidden'
-      visible = false;
+      }
+    }, 120)
+    window.setInterval(function() {
+      if (visible === true) {
+        con.className = 'console-underscore hidden'
+        visible = false;
 
-    } else {
-      con.className = 'console-underscore'
+      } else {
+        con.className = 'console-underscore'
 
-      visible = true;
-    }
-  }, 400)
-}
+        visible = true;
+      }
+    }, 400)
+  }
+  consoleText(['Welcome to the Floof Finder!', 'These cute faces need your love!!!'], 'text',['#cd3b36','#cd3b36']);
+})()
 
 
 
-
+////////// PANEL CONTAINER DOG RENDERING
+let totalDogNum;
 
 fetch("http://localhost:3000/pets")
 .then(res => res.json())
-.then(petsArray => renderDog(petsArray[0]))
+.then(petsArray => {
+  renderDog(petsArray[0]);
+  totalDogNum = petsArray.length;
+})
+
+
+let currentDogId = 1
 
 function renderDog(dog) {
   const panel = document.getElementById("panel-container")
@@ -70,7 +77,18 @@ function renderDog(dog) {
   dogDiv.id = "dog-div"
   dogDiv.classList.add("card")
 
+  /// left right arrows
+  const leftArrow = document.createElement("div")
+  leftArrow.id = "left-arrow"
+  leftArrow.innerText = "LEFTARROW"
+  leftArrow.addEventListener("click", leftArrowClicked)
+  const rightArrow = document.createElement("div")
+  rightArrow.id = "right-arrow"
+  rightArrow.innerText = "RIGHTARROW"
+  rightArrow.addEventListener("click", rightArrowClicked)
+  panel.append(leftArrow, rightArrow)
 
+  /// card elements
   const toptaps = document.createElement("div")
   toptaps.classList.add("card-header")
   toptaps.innerHTML = `
@@ -124,5 +142,29 @@ function renderDog(dog) {
   photoandbioDiv.append(image, bioDiv)
   dogDiv.append(photoandbioDiv)
   panel.append(dogDiv)
-
 }
+
+function leftArrowClicked(event) {
+  currentDogId--
+  if (currentDogId === 0) {
+    alert("You are looking at the first fluff!")
+  } else {
+  fetch(`http://localhost:3000/pets/${currentDogId}`)
+  .then(res => res.json())
+  .then(petObj => renderDog(petObj))
+  }
+}
+
+function rightArrowClicked(event) {
+  currentDogId++
+  if (currentDogId === totalDogNum + 1) {
+    alert("You are looking at the last fluff!")
+  } else {
+  fetch(`http://localhost:3000/pets/${currentDogId}`)
+  .then(res => res.json())
+  .then(petObj => renderDog(petObj))
+  }
+}
+
+
+////////// GALLERY CONTAINER
