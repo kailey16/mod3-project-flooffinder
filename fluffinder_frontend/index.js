@@ -126,7 +126,7 @@ function savepetHandler(event) {
         },
         body: JSON.stringify({
             "user_id" : `${current_user.id}`,
-            "pet_id" : `${}`
+            "pet_id" : `${currentDogId}`
         })
     })
 }
