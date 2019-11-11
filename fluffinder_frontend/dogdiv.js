@@ -58,14 +58,17 @@
 
 
 ////////// PANEL CONTAINER DOG RENDERING
+// fuction renderDogCard
+function renderDogCard() {
 let totalDogNum;
 
 fetch("http://localhost:3000/pets")
-.then(res => res.json())
-.then(petsArray => {
-  renderDog(petsArray[0]);
-  totalDogNum = petsArray.length;
-})
+  .then(res => res.json())
+  .then(petsArray => {
+    renderDog(petsArray[0]);
+    totalDogNum = petsArray.length;
+    document.querySelector("#agency").addEventListener("click", agencyClicked)
+  })
 
 
 let currentDogId = 1
@@ -80,11 +83,11 @@ function renderDog(dog) {
   /// left right arrows
   const leftArrow = document.createElement("div")
   leftArrow.id = "left-arrow"
-  leftArrow.innerText = "LEFTARROW"
+  leftArrow.innerHTML = `<i class="fas fa-chevron-left fa-5x"></i>`
   leftArrow.addEventListener("click", leftArrowClicked)
   const rightArrow = document.createElement("div")
   rightArrow.id = "right-arrow"
-  rightArrow.innerText = "RIGHTARROW"
+  rightArrow.innerHTML = `<i class="fas fa-chevron-right fa-5x"></i>`
   rightArrow.addEventListener("click", rightArrowClicked)
   panel.append(leftArrow, rightArrow)
 
@@ -97,10 +100,9 @@ function renderDog(dog) {
         <a class="nav-link active" href="#">Floof</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Agency</a>
+        <a class="nav-link" id="agency" href="#">Agency</a>
       </li>
     </ul>`
-
   dogDiv.append(toptaps)
 
   const photoandbioDiv = document.createElement("div")
@@ -108,8 +110,8 @@ function renderDog(dog) {
   photoandbioDiv.classList.add("card-body")
 
   const image = document.createElement("img")
-  // image.src = dog.photo[0]
-  image.src = "https://image.cnbcfm.com/api/v1/image/105992231-1561667465295gettyimages-521697453.jpeg?v=1561667497&w=740&h=416"
+  image.src = dog.photo[0]["medium"]
+  // image.src = "https://image.cnbcfm.com/api/v1/image/105992231-1561667465295gettyimages-521697453.jpeg?v=1561667497&w=740&h=416"
   image.id = "dog-image"
 
   const bioDiv = document.createElement("div")
@@ -123,18 +125,26 @@ function renderDog(dog) {
   bioLeftDiv.classList.add("bio-left", "card-text")
   const ageTag = document.createElement("h5")
   ageTag.innerText = `Age: ${dog.age}`
+
   const breedTag = document.createElement("h5")
-  breedTag.innerText = `Breed: ${dog.breed}`
-  const contactTag = document.createElement("h5")
-  contactTag.innerText = `Contact: ${dog.contact.phone}`
-  bioLeftDiv.append(ageTag, breedTag, contactTag)
+  if (dog.breed != null) {
+    breedTag.innerText = `Breed: ${dog.breed}`}
+  else {
+    breedTag.innerText = `Breed: unknown`}
+
+  const descriptionTag = document.createElement("h5")
+  if (dog.description != null) {
+    descriptionTag.innerText = `Description: ${dog.description}`}
+  else {
+    descriptionTag.innerText = `Description: I need a loving parent!`
+  }
+  bioLeftDiv.append(ageTag, breedTag, descriptionTag)
 
   const detailsDiv = document.createElement("div")
   detailsDiv.classList.add("bio-right", "card-text")
   detailsDiv.innerHTML = 
   `<p>Spayed? ${dog.details["spayed_neutered"]}</p>
   <p>House trained? ${dog.details["house_trained"]}</p>
-  <p>Declawed? ${dog.details["declawed"]}</p>
   <p>Special needs? ${dog.details["special_needs"]}</p>
   <p>Shots current? ${dog.details["shots_current"]}</p>`
 
@@ -143,6 +153,11 @@ function renderDog(dog) {
   dogDiv.append(photoandbioDiv)
   panel.append(dogDiv)
 }
+
+
+
+
+
 
 function leftArrowClicked(event) {
   currentDogId--
@@ -165,6 +180,15 @@ function rightArrowClicked(event) {
   .then(petObj => renderDog(petObj))
   }
 }
+
+function agencyClicked(event) {
+  event.preventDefault()
+  const panel = document.getElementById("panel-container")
+
+
+}
+
+} ///renderDogCard function ends here
 
 
 ////////// GALLERY CONTAINER

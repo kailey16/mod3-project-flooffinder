@@ -6,7 +6,7 @@ function createUser() {
     document.getElementById('card-header').innerText ="Create Account"
     document.getElementById('login_button').innerText ="Create Account"
     panelContainer.innerHTML = 
-    '<div class="card-header">
+    `<div class="card-header">
                         <h3>Create Account</h3>
                     </div>
     <div class="card-body">
@@ -34,5 +34,5 @@ function createUser() {
             <input type="submit" value="Login" class="btn float-right login_btn">
         </div>
     </form>
-</div>'
+</div>`
 }

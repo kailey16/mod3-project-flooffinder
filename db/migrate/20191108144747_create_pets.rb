@@ -8,7 +8,7 @@ class CreatePets < ActiveRecord::Migration[6.0]
       t.string :age
       t.string :gender
       t.string :size
-      t.string :description
+      t.text :description
       t.json :contact
       t.json :photo
       t.json :details

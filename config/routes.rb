@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   resources :pets, only: [:index, :show]
 
-  get '/login' => 'sessions#new'
+  # get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
 
