@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2019_11_08_144854) do
     t.string "age"
     t.string "gender"
     t.string "size"
-    t.string "description"
+    t.text "description"
     t.json "contact"
     t.json "photo"
     t.json "details"
