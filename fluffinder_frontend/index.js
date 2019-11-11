@@ -22,7 +22,10 @@ function loginHandler(event) {
         })
     })
     .then(resp => resp.json())
-    .then(resp => console.log(resp))  
+    .then(resp => {
+        currentUser = resp
+        renderDogCard()
+    })  
 }
 
 function signupHandler(event) {
@@ -41,7 +44,10 @@ function signupHandler(event) {
         })
     })
     .then(resp => resp.json())
-    .then(resp => 
+    .then(resp => {
+        currentUser = resp
+        renderDogCard()
+    })
 }
 
 function createUser(event) {
