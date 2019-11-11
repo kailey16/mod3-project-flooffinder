@@ -3,6 +3,7 @@
 
 ////////// WELCOME BANNER
 
+
 (function welcomeBanner() {
   function consoleText(words, id, colors) {
     if (colors === undefined) colors = ['#fff'];

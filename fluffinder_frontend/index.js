@@ -1,14 +1,21 @@
+let signUpButton = document.getElementById('sign_up_button')
+document.addEventListener("DOMContentLoaded", function(){
+    signUpButton.addEventListener("click", createUser)
+})
 
 
-function createUser() {
-    panelContainer = document.getElementsByClassName('card')
-    document.getElementsByClassName('card').style.height="400px";
-    document.getElementById('card-header').innerText ="Create Account"
-    document.getElementById('login_button').innerText ="Create Account"
+
+function createUser(event) {
+    event.preventDefault()
+    console.log('here')
+    panelContainer = document.getElementsByClassName('card')[0]
+    panelContainer.style.height="300px";
+    document.getElementById('login_header').innerText ="Create Account"
+    
     panelContainer.innerHTML = 
-    '<div class="card-header">
-                        <h3>Create Account</h3>
-                    </div>
+    `<div class="card-header">
+        <h3>Create Account</h3>
+    </div>
     <div class="card-body">
     <form>
         <div class="input-group form-group">
@@ -34,5 +41,5 @@ function createUser() {
             <input type="submit" value="Login" class="btn float-right login_btn">
         </div>
     </form>
-</div>'
+</div>`
 }
