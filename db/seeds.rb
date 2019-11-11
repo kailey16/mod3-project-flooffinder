@@ -1,22 +1,26 @@
 require 'rest-client'
-headers = {Authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjZhNWE3NWFkNmFlZmQ2MjliNGMxYTIxMjRkY2NlYjMyNTZjOGQxOWQwMThjM2QwMzlhMGY0OTI4YjBmZDM4MzNmYTM4YjU5NDNmNmNlNTkxIn0.eyJhdWQiOiJSclg4UXhmVndyQzFWVDdocXJyU1dtNWhQUGM4eFJxaEJHUVNKdVo1R0x4VFl5S0RYMiIsImp0aSI6IjZhNWE3NWFkNmFlZmQ2MjliNGMxYTIxMjRkY2NlYjMyNTZjOGQxOWQwMThjM2QwMzlhMGY0OTI4YjBmZDM4MzNmYTM4YjU5NDNmNmNlNTkxIiwiaWF0IjoxNTczNDkzMDEwLCJuYmYiOjE1NzM0OTMwMTAsImV4cCI6MTU3MzQ5NjYxMCwic3ViIjoiIiwic2NvcGVzIjpbXX0.ay0qApEvN0DYYkibj4SaP6Q8E1MJInpWM8iqza7OCvUA8fvSQCPUXqTbL7MgWv27xUExXU0kVgPlNaLhXYMSRzoBrxx9YPhRtWWDX3qL6JZcTIZn0Osz_E80v5kAyTNbKbNXYVhUlsSzXkxS3bLXt_KiXcxg3nzLPuqpwApy0PqLOB8tVyt5xZ_hSHw3Eb4oq0hmsiE9j4TEExHFh1WciM8eXopQMJf_U9m3C-EytLYfjIldtPV3K90ILz5iVrEIF7BqS3UjfuQtKASj3Rgh4W7Di8IPOpEjxRrbX0AOghtou_lDgncCBqqT1zsRwL4qoyrGITX-yH3_n3uf_gf62w'}
+
+headers = {Authorization: "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImEzZTU4ZDUxOThlY2VlZDdlY2FjNGYzZTY0ZmNlMDhjNmVkZjM0N2EyMzRiNDdjODc1YjBmYTVmYTUzNzc4N2Y3NWU2Njk0NTMwNzhlNzM4In0.eyJhdWQiOiI4UlJqbE1kZzBLU2EzNTdwZUMyNHVBREhTUjI5bHlOeERVSHRiWUx0YjlHM1IxSVNQQSIsImp0aSI6ImEzZTU4ZDUxOThlY2VlZDdlY2FjNGYzZTY0ZmNlMDhjNmVkZjM0N2EyMzRiNDdjODc1YjBmYTVmYTUzNzc4N2Y3NWU2Njk0NTMwNzhlNzM4IiwiaWF0IjoxNTczNDkyNzk5LCJuYmYiOjE1NzM0OTI3OTksImV4cCI6MTU3MzQ5NjM5OSwic3ViIjoiIiwic2NvcGVzIjpbXX0.rGo2dl8uCzeDDlqW7JiJxU3WJ62PRDrZtAG5p6tKCZpvBpXOiNtpn3njHlESxZ4IuN5NS7aBVWbg2DSeEtgHlXPa1fKL7-2H_uTOVMYoGkFVMDtdR1GaMEQx44S0sIjoH5mqqdxln0n3yI75f7wvVCPW3SyUFYDc99XfejvW1-hFurBO_RbQ2IG2addtPMYpdulLYBFF0rdJ2jq1BoXmvWhIjiRwEZQkuvuDgNuCyW2nuEoCQsqtGM4hKVWVKXGQWN43D1XNWXkB64xfQOrLH2tTA-iLzEgjDCKXwxFHX2lcauiU3iiFSf4V5hYaQY-JRhc0NLtShlbT2qAbaMWqEw"}
 response = RestClient.get('https://api.petfinder.com/v2/animals?page=5', headers)
 petsArray = JSON.parse(response.body)
 
 petsArray["animals"].each do |pet|
-
-    Pet.create(
-        species: pet["species"],
-        breed: pet["breed"],
-        age: pet["age"],
-        gender: pet["gender"],
-        size: pet["size"],
-        description: pet["description"],
-        contact: pet["contact"],
-        photo: pet["photos"],
-        name: pet["name"],
-        details: pet["attributes"]
-    )
+    if pet["photos"].length != 0
+        if pet["species"] == "Dog"
+            Pet.find_or_create_by(
+                species: pet["species"],
+                breed: pet["breed"],
+                age: pet["age"],
+                gender: pet["gender"],
+                size: pet["size"],
+                description: pet["description"],
+                contact: pet["contact"],
+                photo: pet["photos"],
+                name: pet["name"],
+                details: pet["attributes"]
+            )
+        end
+    end
 end
 
 
