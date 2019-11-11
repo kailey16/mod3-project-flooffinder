@@ -1,13 +1,49 @@
 let signUpButton = document.getElementById('sign_up_button')
+let loginForm = document.getElementById('login-form')
+let submitForm = document.getElementById('submit-form')
+
 document.addEventListener("DOMContentLoaded", function(){
     signUpButton.addEventListener("click", createUser)
+    loginForm.addEventListener("submit", loginHandler)
+
+  
 })
 
+function loginHandler(event) {
+    console.log("here")
+    fetch('localhost:3000/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            "name" : `${submitForm.value}`
+        })
+    })
+    .then(resp => resp.json())
+    .then(resp => console.log(resp))  
+}
 
+function signupHandler(event) {
+    debugger
+    
+    fetch('localhost:3000/users', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            "name" : `${event.target["name"].value}`,
+            "phone_number" : `${event.target["phonenumber"]}`,
+            "email" : `${event.target["email"]}`
+        })
+    })
+    .then(resp => resp.json())
+    .then(resp => console.log(resp))
+}
 
 function createUser(event) {
     event.preventDefault()
-    console.log('here')
     panelContainer = document.getElementsByClassName('card')[0]
     panelContainer.style.height="300px";
     document.getElementById('login_header').innerText ="Create Account"
@@ -17,29 +53,32 @@ function createUser(event) {
         <h3>Create Account</h3>
     </div>
     <div class="card-body">
-    <form>
+    <form id="sign-up-form">
         <div class="input-group form-group">
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-user"></i></span>
             </div>
-            <input type="text" class="form-control" placeholder="username">
+            <input type="text" class="form-control" name="name" placeholder="username">
         </div>
         <div class="input-group form-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-user"></i></span>
                 </div>
-                <input type="text" class="form-control" placeholder="phone number">
+                <input type="text" class="form-control" name="phonenumber" placeholder="phone number">
             </div>
             <div class="input-group form-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-user"></i></span>
                     </div>
-                    <input type="text" class="form-control" placeholder="email">
+                    <input type="text" class="form-control" name="email" placeholder="email">
                 </div>
         
         <div class="form-group">
-            <input type="submit" value="Login" class="btn float-right login_btn">
+            <input type="submit" value="Submit" class="btn float-right login_btn">
         </div>
     </form>
 </div>`
+
+  let signUpForm = document.getElementById('sign-up-form')
+    signUpForm.addEventListener("submit", signupHandler)
 }
