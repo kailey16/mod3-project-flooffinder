@@ -85,7 +85,7 @@ function createUser(event) {
     </form>
 </div>`
 
-  let signUpForm = document.getElementById('sign-up-form')
+let signUpForm = document.getElementById('sign-up-form')
     signUpForm.addEventListener("submit", signupHandler)
 }
 
