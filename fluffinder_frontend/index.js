@@ -6,8 +6,6 @@ let currentUser
 document.addEventListener("DOMContentLoaded", function(){
     signUpButton.addEventListener("click", createUser)
     loginForm.addEventListener("submit", loginHandler)
-
-  
 })
 
 function loginHandler(event) {
@@ -91,3 +89,44 @@ function createUser(event) {
     signUpForm.addEventListener("submit", signupHandler)
 }
 
+ /* ----------------- PET BUTTON MODAL --------- */
+
+var modal = document.querySelector("#modal");
+var modalOverlay = document.querySelector("#modal-overlay");
+var closeButton = document.querySelector("#close-button");
+var petButton = document.querySelector("#pet-button");
+
+closeButton.addEventListener("click", function() {
+  modal.classList.toggle("closed");
+  modalOverlay.classList.toggle("closed");
+});
+
+petButton.addEventListener("click", function() {
+  modal.classList.toggle("closed");
+  modalOverlay.classList.toggle("closed");
+});
+
+/************ RENDERING PET MODAL ******************/
+
+let petCardContainer = document.getElementById('pet-cards')
+
+function renderPetCard() {
+    fetch('http://localhost:3000/savepets')
+        .then(resp => resp.json())
+        .then(resp => {
+            console.log('here')
+        })
+}
+
+function savepetHandler(event) {
+    fetch('http://localhost:3000/savepets', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            "user_id" : `${current_user.id}`,
+            "pet_id" : `${}`
+        })
+    })
+}

@@ -185,7 +185,7 @@ function rightArrowClicked(event) {
 function agencyClicked(event) {
   event.preventDefault()
   const panel = document.getElementById("panel-container")
-
+  
 
 }
 

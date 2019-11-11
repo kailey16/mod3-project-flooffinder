@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :savepets, except: [:index, :new, :edit, :update]
 
-  resources :pets, only: [:index, :show]
+  resources :pets, only: [:index, :show, :create, :delete]
 
   # get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
