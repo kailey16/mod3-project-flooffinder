@@ -1,5 +1,10 @@
+
+
 function createUser() {
     panelContainer = document.getElementsByClassName('card')
+    document.getElementsByClassName('card').style.height="400px";
+    document.getElementById('card-header').innerText ="Create Account"
+    document.getElementById('login_button').innerText ="Create Account"
     panelContainer.innerHTML = 
     '<div class="card-header">
                         <h3>Create Account</h3>
