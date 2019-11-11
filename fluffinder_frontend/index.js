@@ -10,8 +10,8 @@ document.addEventListener("DOMContentLoaded", function(){
 })
 
 function loginHandler(event) {
-    console.log("here")
-    fetch('localhost:3000/login', {
+    event.preventDefault()
+    fetch('http://localhost:3000/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -25,17 +25,18 @@ function loginHandler(event) {
 }
 
 function signupHandler(event) {
-    debugger
-    
-    fetch('localhost:3000/users', {
+
+    event.preventDefault()
+
+    fetch('http://localhost:3000/users', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
             "name" : `${event.target["name"].value}`,
-            "phone_number" : `${event.target["phonenumber"]}`,
-            "email" : `${event.target["email"]}`
+            "phone_number" : `${event.target["phonenumber"].value}`,
+            "email" : `${event.target["email"].value}`
         })
     })
     .then(resp => resp.json())
