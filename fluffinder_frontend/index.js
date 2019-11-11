@@ -90,3 +90,4 @@ function createUser(event) {
   let signUpForm = document.getElementById('sign-up-form')
     signUpForm.addEventListener("submit", signupHandler)
 }
+
