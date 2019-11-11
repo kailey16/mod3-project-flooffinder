@@ -60,19 +60,20 @@
 
 ////////// PANEL CONTAINER DOG RENDERING
 // fuction renderDogCard
-function renderDogCard() {
 let totalDogNum;
+let currentDogId = 1;
 
-fetch("http://localhost:3000/pets")
-  .then(res => res.json())
-  .then(petsArray => {
-    renderDog(petsArray[0]);
-    totalDogNum = petsArray.length;
-    document.querySelector("#agency").addEventListener("click", agencyClicked)
-  })
+function renderDogCard() {
 
-
-let currentDogId = 1
+  fetch("http://localhost:3000/pets")
+    .then(res => res.json())
+    .then(petsArray => {
+      renderDog(petsArray[0]);
+      totalDogNum = petsArray.length;
+      document.querySelector("#agency").addEventListener("click", agencytapClicked);
+      document.querySelector("#floof-tap").addEventListener("click", flooftapClicked);
+    })
+}
 
 function renderDog(dog) {
   const panel = document.getElementById("panel-container")
@@ -98,10 +99,10 @@ function renderDog(dog) {
   toptaps.innerHTML = `
     <ul class="nav nav-tabs card-header-tabs">
       <li class="nav-item">
-        <a class="nav-link active" href="#">Floof</a>
+        <a class="nav-link active" id="floof-tap">Floof</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="agency" href="#">Agency</a>
+        <a class="nav-link" id="agency">Agency</a>
       </li>
     </ul>`
   dogDiv.append(toptaps)
@@ -158,7 +159,7 @@ function renderDog(dog) {
 
 
 
-
+///// Event Listener call back functions
 
 function leftArrowClicked(event) {
   currentDogId--
@@ -167,7 +168,11 @@ function leftArrowClicked(event) {
   } else {
   fetch(`http://localhost:3000/pets/${currentDogId}`)
   .then(res => res.json())
-  .then(petObj => renderDog(petObj))
+  .then(petObj => {
+    renderDog(petObj);
+    document.querySelector("#agency").addEventListener("click", agencytapClicked);
+    document.querySelector("#floof-tap").addEventListener("click", flooftapClicked);
+  })
   }
 }
 
@@ -178,18 +183,39 @@ function rightArrowClicked(event) {
   } else {
   fetch(`http://localhost:3000/pets/${currentDogId}`)
   .then(res => res.json())
-  .then(petObj => renderDog(petObj))
+  .then(petObj => {
+    renderDog(petObj);
+    document.querySelector("#agency").addEventListener("click", agencytapClicked);
+    document.querySelector("#floof-tap").addEventListener("click", flooftapClicked);
+  })  
   }
 }
 
-function agencyClicked(event) {
+function agencytapClicked(event) {
   event.preventDefault()
-  const panel = document.getElementById("panel-container")
-  
+  console.log("Agency clicked")
+  const dogBioDiv = document.getElementById("dog-bio")
 
+  fetch(`http://localhost:3000/pets/${currentDogId}`)
+  .then(res => res.json())
+  .then(dog => {
+    dogBioDiv.innerHTML = `
+    <div><h5 class="agency-info-title">Email</h5><p class="agency-info">${dog["contact"]["email"]}</p></div>
+    <div><h5 class="agency-info-title">Phone number</h5><p class="agency-info">${dog["contact"]["phone"]}</p></div>
+    <div><h5 class="agency-info-title">Address</h5><p class="agency-info">${dog["contact"]["address"]["address1"]}, ${dog["contact"]["address"]["city"]}, ${dog["contact"]["address"]["state"]} ${dog["contact"]["address"]["postcode"]}</p></div>
+    `;
+    document.querySelector("#agency").addEventListener("click", agencytapClicked);
+    document.querySelector("#floof-tap").addEventListener("click", flooftapClicked);
+  })
 }
 
-} ///renderDogCard function ends here
 
-
-////////// GALLERY CONTAINER
+function flooftapClicked(event) {
+  fetch(`http://localhost:3000/pets/${currentDogId}`)
+  .then(res => res.json())
+  .then(petObj => {
+    renderDog(petObj);
+    document.querySelector("#agency").addEventListener("click", agencytapClicked);
+    document.querySelector("#floof-tap").addEventListener("click", flooftapClicked);
+  })
+}
