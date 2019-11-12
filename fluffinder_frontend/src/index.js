@@ -124,6 +124,8 @@ function renderModalCards() {
                 .then(res => res.json())
                 .then(pet => {
                     let petContainer = document.createElement('div')
+                    petContainer.id = `petContainer-${savepet.id}`
+
                     petContainer.innerHTML = `
                     <div class="card" style="width: 18rem;">
                     <img class="card-img-top" alt="Card image cap" src="${pet.photo[0].small}">
@@ -141,52 +143,12 @@ function renderModalCards() {
         
                     let modalContainer = document.getElementById('pet-cards')
                     modalContainer.append(petContainer)
-                    let deleteButtons = Array.prototype.slice.call(document.getElementsByClassName('delete'))
-                    deleteButtons.forEach(button => {
-                        button.addEventListener("click", deleteButton)
-                    })
+                    let dButton = document.getElementById(`${savepet.id}`)
+                    dButton.addEventListener("click", deleteButton)
                 })
             })
         })
-        
-        // let deleteButtons = Array.prototype.slice.call(document.getElementsByClassName('delete'))
-        // deleteButtons.forEach(button => {
-        //     button.addEventListener("click", deleteButton)
-        // })
     }
-
-//             user.pets.forEach(pet => {
-//                 let petContainer = document.createElement('div')
-//                 petContainer.innerHTML = `
-//                 <div class="card" style="width: 18rem;">
-//                 <img class="card-img-top" alt="Card image cap" src="${pet.photo[0].small}">
-//                 <div class="card-body">
-//                  <h5 class="card-title">${pet.name}</h5>
-//                  <a tabindex="0" class="btn btn-primary btn-danger " role="button" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="Email: ${pet["contact"]["email"]} Phone: ${pet["contact"]["phone"]} \n Address: ${pet["contact"]["address"]["address1"]}">Adoption info</a>
-//                  <button id="${pet.id}"class="btn btn-primary delete">Delete</button>
-
-//   </div>
-// </div>
-//                 `
-//                 $(document).ready(function(){
-//                   $('[data-toggle="popover"]').popover();
-//                 });
-    
-//                 let modalContainer = document.getElementById('pet-cards')
-//                 modalContainer.append(petContainer) 
-//             }
-//             )
-//             let deleteButtons = Array.prototype.slice.call(document.getElementsByClassName('delete'))
-//             deleteButtons.forEach(button => {
-//                 button.addEventListener("click", deleteButton)
-//             })
-//         }
-
-
-
-
-
-
 
 
 function deleteButton(event) {
@@ -198,7 +160,10 @@ function deleteButton(event) {
         }
     })
     .then(res => res.json())
-    .then(savepet => console.log(savepet))
+    .then(savepet => {
+        const petContainer = document.getElementById(`petContainer-${savepet.id}`)
+        petContainer.remove()
+    })
 }
 
 function savepetHandler(event) {
