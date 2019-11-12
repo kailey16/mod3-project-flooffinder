@@ -125,10 +125,11 @@ function renderModalCards() {
                 .then(pet => {
                     let petContainer = document.createElement('div')
                     petContainer.id = `petContainer-${savepet.id}`
+                    petContainer.classList.add('petContainer')
 
                     petContainer.innerHTML = `
                     <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" alt="Card image cap" src="${pet.photo[0].small}">
+                    <img class="card-img-top" alt="Card image cap" src="${pet.photo[0].medium}">
                     <div class="card-body">
                      <h5 class="card-title">${pet.name}</h5>
                      <a tabindex="0" class="btn btn-primary btn-danger " role="button" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="Email: ${pet["contact"]["email"]} Phone: ${pet["contact"]["phone"]} \n Address: ${pet["contact"]["address"]["address1"]}">Adoption info</a>
