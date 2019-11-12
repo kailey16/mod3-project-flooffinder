@@ -207,10 +207,11 @@ function agencytapClicked(event) {
   fetch(`http://localhost:3000/pets/${currentDogId}`)
   .then(res => res.json())
   .then(dog => {
+    dogBioDiv.classList.add("list-group", "list-group-flush")
     dogBioDiv.innerHTML = `
-    <div><h5 class="agency-info-title">Email</h5><p class="agency-info">${dog["contact"]["email"]}</p></div>
-    <div><h5 class="agency-info-title">Phone number</h5><p class="agency-info">${dog["contact"]["phone"]}</p></div>
-    <div><h5 class="agency-info-title">Address</h5><p class="agency-info">${dog["contact"]["address"]["address1"]}, ${dog["contact"]["address"]["city"]}, ${dog["contact"]["address"]["state"]} ${dog["contact"]["address"]["postcode"]}</p></div>
+    <div class="list-group-item"><h5>Email</h5><p class="list-group-item-q">${dog["contact"]["email"]}</p></div>
+    <div class="list-group-item"><h5>Phone number</h5><p class="list-group-item-q">${dog["contact"]["phone"]}</p></div>
+    <div class="list-group-item"><h5>Address</h5><p class="list-group-item-q">${dog["contact"]["address"]["address1"]}, ${dog["contact"]["address"]["city"]}, ${dog["contact"]["address"]["state"]} ${dog["contact"]["address"]["postcode"]}</p></div>
     `;
     document.querySelector("#agency").addEventListener("click", agencytapClicked);
     document.querySelector("#floof-tap").addEventListener("click", flooftapClicked);

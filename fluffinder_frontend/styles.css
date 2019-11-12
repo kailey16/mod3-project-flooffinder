@@ -254,7 +254,7 @@ margin-left: 4px;
     text-align: left;
     width: 270px;
     height: auto;
-    margin: 20px 0 0 40px;
+    margin: 20px 0 0 35px;
 }
 .list-group-item {
     background-color: #f2e3c9 !important;;
@@ -265,7 +265,7 @@ margin-left: 4px;
     background-color: #fff6da !important;;
     opacity: 0.8;
     color: #992e24;
-    padding: 3px 7px 3px 7px;
+    padding: 3px 10px 3px 10px;
     margin: 0;
 }
 
@@ -276,13 +276,6 @@ margin-left: 4px;
     display: inline;
 }
 
-
-/* Agency tag CSS */
-
-.agency-info-title {
-    background-color: white;
-    margin: 0 50px 10px 50px;
-}
 
 
 
