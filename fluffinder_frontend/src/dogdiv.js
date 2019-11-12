@@ -3,7 +3,6 @@
 
 ////////// WELCOME BANNER
 
-
 (function welcomeBanner() {
   function consoleText(words, id, colors) {
     if (colors === undefined) colors = ['#fff'];
@@ -152,7 +151,7 @@ function renderDog(dog) {
   const detailsDiv = document.createElement("div")
   detailsDiv.classList.add("bio-right", "list-group", "list-group-flush")
   detailsDiv.innerHTML = 
-  `<p class="list-group-item"><i class="fas fa-paw"></i> <b>Is ${dog.name}</b> <i class="fas fa-paw"></i></p>
+  `<p class="list-group-item"><i class="fas fa-paw"></i> <b>Am I</b> <i class="fas fa-paw"></i></p>
   <p class="list-group-item-q"><b>Spayed?</b> ${dog.details["spayed_neutered"]}</p>
   <p class="list-group-item-q"><b>House trained?</b> ${dog.details["house_trained"]}</p>
   <p class="list-group-item-q"><b>Special needs?</b> ${dog.details["special_needs"]}</p>
@@ -207,11 +206,14 @@ function agencytapClicked(event) {
   fetch(`http://localhost:3000/pets/${currentDogId}`)
   .then(res => res.json())
   .then(dog => {
-    dogBioDiv.classList.add("list-group", "list-group-flush")
+    dogBioDiv.classList.add("list-group", "list-group-flush", "agency-details")
+
     dogBioDiv.innerHTML = `
-    <div class="list-group-item"><h5>Email</h5><p class="list-group-item-q">${dog["contact"]["email"]}</p></div>
-    <div class="list-group-item"><h5>Phone number</h5><p class="list-group-item-q">${dog["contact"]["phone"]}</p></div>
-    <div class="list-group-item"><h5>Address</h5><p class="list-group-item-q">${dog["contact"]["address"]["address1"]}, ${dog["contact"]["address"]["city"]}, ${dog["contact"]["address"]["state"]} ${dog["contact"]["address"]["postcode"]}</p></div>
+    <div class="list-group-item detail-title"><i class="fas fa-bone"></i> <b>Email</b> <i class="fas fa-bone"></i><p class="list-group-item-q">${dog["contact"]["email"]}</p></div>
+
+    <div class="list-group-item detail-title"><i class="fas fa-bone"></i> <b>Phone Number</b> <i class="fas fa-bone"></i><p class="list-group-item-q">${dog["contact"]["phone"]}</p></div>
+
+    <div class="list-group-item detail-title"><i class="fas fa-bone"></i> <b>Address</b> <i class="fas fa-bone"></i><p class="list-group-item-q">${dog["contact"]["address"]["address1"]}, ${dog["contact"]["address"]["city"]}, ${dog["contact"]["address"]["state"]} ${dog["contact"]["address"]["postcode"]}</p></div>
     `;
     document.querySelector("#agency").addEventListener("click", agencytapClicked);
     document.querySelector("#floof-tap").addEventListener("click", flooftapClicked);
