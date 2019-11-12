@@ -106,6 +106,7 @@ closeButton.addEventListener("click", function() {
 petButton.addEventListener("click", function() {
   modal.classList.toggle("closed");
   modalOverlay.classList.toggle("closed");
+  renderModalCards()
 });
 
 /************ RENDERING PET MODAL ******************/
@@ -113,10 +114,11 @@ petButton.addEventListener("click", function() {
 let petCardContainer = document.getElementById('pet-cards')
 
 function renderModalCards() {
+    debugger
     fetch(`http://localhost:3000/users/${currentUser.id}`)
         .then(resp => resp.json())
         .then(resp => {
-            console.log('here')
+            console.log(resp)
         })
 }
 

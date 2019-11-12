@@ -118,7 +118,7 @@ margin-left: 4px;
   height: 350px;
   width:600px;
   display:block;
-  position: absolute;
+  /* position: absolute */
   color:white;
   top:0;
   bottom:0;
