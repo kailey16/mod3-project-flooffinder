@@ -390,10 +390,20 @@ margin-left: 4px;
   font-family: 'Covered By Your Grace';
   max-width:100%;
   max-height:100%;
+  object-fit: cover;
+  margin: 100px;
   }
 
   #petContainer {
+    max-width: 100%;
+    max-height: 100%;
     padding: auto;
     text-align: center;
     display: inline-block;
+    margin-top:100px;
+
+  }
+
+  .card-body {
+    margin-top:10px;
   }

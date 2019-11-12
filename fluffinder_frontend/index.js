@@ -142,19 +142,18 @@ function renderModalCards() {
         
                     let modalContainer = document.getElementById('pet-cards')
                     modalContainer.append(petContainer)
-                    let deleteButtons = Array.prototype.slice.call(document.getElementsByClassName('delete'))
-                    deleteButtons.forEach(button => {
-                        button.addEventListener("click", deleteButton)
-                    })
+                    let dButton = document.getElementById(`${savepet.id}`)
+                    dButton.addEventListener("click", deleteButton)
+                })
                 })
             })
-        })
+        }
         
         // let deleteButtons = Array.prototype.slice.call(document.getElementsByClassName('delete'))
         // deleteButtons.forEach(button => {
         //     button.addEventListener("click", deleteButton)
         // })
-    }
+    
 
 //             user.pets.forEach(pet => {
 //                 let petContainer = document.createElement('div')
@@ -191,6 +190,7 @@ function renderModalCards() {
 
 
 function deleteButton(event) {
+    debugger
     let savepetId = event.target.id
     let petContainer = document.getElementById('petContainer')
     fetch(`http://localhost:3000/savepets/${savepetId}`, {
@@ -200,7 +200,7 @@ function deleteButton(event) {
         }
     })
     .then(res => res.json())
-    .then(petContainer.innerHTML = "")
+    .then(petContainer.remove())
 }
 
 function savepetHandler(event) {
