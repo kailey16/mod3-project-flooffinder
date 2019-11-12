@@ -1,6 +1,7 @@
 let signUpButton = document.getElementById('sign_up_button')
 let loginForm = document.getElementById('login-form')
 let submitForm = document.getElementById('submit-form')
+let petButton = document.getElementById("pet-button");
 let currentUser
 
 document.addEventListener("DOMContentLoaded", function(){
@@ -21,6 +22,7 @@ function loginHandler(event) {
     })
     .then(resp => resp.json())
     .then(resp => {
+
         currentUser = resp
         renderDogCard()
     })
@@ -95,7 +97,7 @@ let signUpForm = document.getElementById('sign-up-form')
 var modal = document.querySelector("#modal");
 var modalOverlay = document.querySelector("#modal-overlay");
 var closeButton = document.querySelector("#close-button");
-var petButton = document.querySelector("#pet-button");
+
 
 closeButton.addEventListener("click", function() {
   modal.classList.toggle("closed");
@@ -105,17 +107,19 @@ closeButton.addEventListener("click", function() {
 petButton.addEventListener("click", function() {
   modal.classList.toggle("closed");
   modalOverlay.classList.toggle("closed");
+  renderModalCards()
 });
 
 /************ RENDERING PET MODAL ******************/
 
 let petCardContainer = document.getElementById('pet-cards')
 
-function renderPetCard() {
-    fetch('http://localhost:3000/savepets')
+function renderModalCards() {
+    debugger
+    fetch(`http://localhost:3000/users/${currentUser.id}`)
         .then(resp => resp.json())
         .then(resp => {
-            console.log('here')
+            console.log(resp)
         })
 }
 
