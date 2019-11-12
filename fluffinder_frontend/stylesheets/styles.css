@@ -242,6 +242,13 @@ h1 {
   margin-top: 25%;
 }
 
+/* savepet icon */
+#save-pet-icon {
+  float: right;
+  color: #7ecfc0;
+}
+
+
 
 /* login & signup forms */
 .container{
