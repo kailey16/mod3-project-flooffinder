@@ -4,9 +4,15 @@ class UsersController < ApplicationController
     render json: users.to_json({
       except: [:created_at, :updated_at],
       :include => {
-        :savepets => {
+    :savepets => {
+      except: [:created_at, :updated_at]
+    }
+  },
+      :include => {
+        :pets => {
           except: [:created_at, :updated_at]
         }
+
       }
     }
 
@@ -16,7 +22,18 @@ class UsersController < ApplicationController
   def show
     user = User.find(params[:id])
     
-    render json: user
+    render json: user.to_json({
+      except: [:created_at, :updated_at],
+      :include => {
+        :pets => {
+          except: [:created_at, :updated_at]
+        },
+    :savepets => {
+      except: [:created_at, :updated_at]
+    }
+    }
+  }
+    )
   end 
 
   def create

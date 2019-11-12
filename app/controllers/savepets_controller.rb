@@ -14,7 +14,7 @@ class SavepetsController < ApplicationController
   end
 
   def destroy
-    savePet = SavePet.find(params["id"]).destroy
+    savePet = Savepet.find(params["id"]).destroy
     render json: savePet
   end
 
