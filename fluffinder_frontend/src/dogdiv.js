@@ -91,6 +91,14 @@ function renderDog(dog) {
   rightArrow.addEventListener("click", rightArrowClicked)
   panel.append(leftArrow, rightArrow)
 
+
+  /// savepet icon
+  const savepetIcon = document.createElement("div")
+  savepetIcon.innerHTML = `<i class="fas fa-dog fa-6x fa-flip-horizontal"></i><i class="fas fa-heart fa-3x"></i>`
+  savepetIcon.id = "save-pet-icon"
+  savepetIcon.addEventListener("dragenter", dogsavedropped)
+  panel.append(savepetIcon)
+
   /// card elements
   const toptaps = document.createElement("div")
   toptaps.classList.add("card-header")
@@ -112,6 +120,7 @@ function renderDog(dog) {
   const image = document.createElement("img")
   image.src = dog.photo[0]["medium"]
   image.id = "dog-image"
+  image.draggable = true
   image.addEventListener("click", savepetHandler)
 
   const bioDiv = document.createElement("div")
@@ -229,4 +238,21 @@ function flooftapClicked(event) {
     document.querySelector("#agency").addEventListener("click", agencytapClicked);
     document.querySelector("#floof-tap").addEventListener("click", flooftapClicked);
   })
+}
+
+
+function dogsavedropped(event) {
+  event.preventDefault()
+  if (!currentUser.savepets.map((savepet)=>savepet["pet_id"]).includes(currentDogId)) {
+  fetch('http://localhost:3000/savepets', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+        "user_id" : `${currentUser.id}`,
+        "pet_id" : `${currentDogId}`
+    })
+  })
+  } else {alert("You already saved this cutie!")}
 }

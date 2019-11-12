@@ -223,6 +223,13 @@ margin-left: 4px;
     margin-top: 25%;
 }
 
+/* savepet icon */
+#save-pet-icon {
+  float: right;
+  color: #7ecfc0;
+}
+
+
 
 
 /* Dog Div CSS */
