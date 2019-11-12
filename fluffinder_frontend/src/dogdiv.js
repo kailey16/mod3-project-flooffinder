@@ -243,7 +243,10 @@ function flooftapClicked(event) {
 
 function dogsavedropped(event) {
   event.preventDefault()
-  if (!currentUser.savepets.map((savepet)=>savepet["pet_id"]).includes(currentDogId)) {
+  debugger
+  if (currentUser.savepets.map((savepet)=>savepet["pet_id"]).includes(currentDogId)) {
+    alert("You already saved this fluff!")}
+  else {
   fetch('http://localhost:3000/savepets', {
     method: 'POST',
     headers: {
@@ -254,5 +257,6 @@ function dogsavedropped(event) {
         "pet_id" : `${currentDogId}`
     })
   })
-  } else {alert("You already saved this cutie!")}
+  .then(()=>alert(`Thank you for saving this fluff!`))
+  }
 }
