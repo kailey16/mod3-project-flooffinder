@@ -143,7 +143,7 @@ function renderModalCards() {
         
                     let modalContainer = document.getElementById('pet-cards')
                     modalContainer.append(petContainer)
-                    let dButton = document.getElementById(`${savepet.id}`)
+                    let dButton = document.getElementById(savepet.id)
                     dButton.addEventListener("click", deleteButton)
                 })
             })
