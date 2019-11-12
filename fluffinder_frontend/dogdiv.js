@@ -59,7 +59,6 @@
 
 
 ////////// PANEL CONTAINER DOG RENDERING
-// fuction renderDogCard
 let totalDogNum;
 let currentDogId = 1;
 
@@ -85,11 +84,11 @@ function renderDog(dog) {
   /// left right arrows
   const leftArrow = document.createElement("div")
   leftArrow.id = "left-arrow"
-  leftArrow.innerHTML = `<i class="fas fa-chevron-left fa-5x"></i>`
+  leftArrow.innerHTML = `<i class="fas fa-chevron-left fa-4x"></i>`
   leftArrow.addEventListener("click", leftArrowClicked)
   const rightArrow = document.createElement("div")
   rightArrow.id = "right-arrow"
-  rightArrow.innerHTML = `<i class="fas fa-chevron-right fa-5x"></i>`
+  rightArrow.innerHTML = `<i class="fas fa-chevron-right fa-4x"></i>`
   rightArrow.addEventListener("click", rightArrowClicked)
   panel.append(leftArrow, rightArrow)
 
@@ -113,7 +112,6 @@ function renderDog(dog) {
 
   const image = document.createElement("img")
   image.src = dog.photo[0]["medium"]
-  // image.src = "https://image.cnbcfm.com/api/v1/image/105992231-1561667465295gettyimages-521697453.jpeg?v=1561667497&w=740&h=416"
   image.id = "dog-image"
   image.addEventListener("click", savepetHandler)
 
@@ -125,31 +123,40 @@ function renderDog(dog) {
   nameTag.innerText = dog.name
   
   const bioLeftDiv = document.createElement("div")
-  bioLeftDiv.classList.add("bio-left", "card-text")
-  const ageTag = document.createElement("h5")
-  ageTag.innerText = `Age: ${dog.age}`
+  bioLeftDiv.classList.add("bio-left", "list-group", "list-group-flush")
+  const ageTag = document.createElement("div")
+  ageTag.innerHTML = `<b>AGE</b> <i class="fas fa-paw"></i> ${dog.age}`
+  ageTag.classList.add("list-group-item")
 
-  const breedTag = document.createElement("h5")
+  const breedTag = document.createElement("div")
   if (dog.breed != null) {
-    breedTag.innerText = `Breed: ${dog.breed}`}
+    breedTag.innerHTML = `<b>BREED</b> <i class="fas fa-paw"></i> ${dog.breed}`
+    breedTag.classList.add("list-group-item")
+  }
   else {
-    breedTag.innerText = `Breed: unknown`}
+    breedTag.innerHTML = `<b>BREED</b> <i class="fas fa-paw"></i> unknown`
+    breedTag.classList.add("list-group-item")
+  }
 
-  const descriptionTag = document.createElement("h5")
+  const descriptionTag = document.createElement("div")
   if (dog.description != null) {
-    descriptionTag.innerText = `Description: ${dog.description}`}
+    descriptionTag.innerHTML = `<b>DESCRIPTION</b> <i class="fas fa-paw"></i><br> ${dog.description}`
+    descriptionTag.classList.add("list-group-item")
+  }
   else {
-    descriptionTag.innerText = `Description: I need a loving parent!`
+    descriptionTag.innerHTML = `<b>DESCRIPTION</b> <i class="fas fa-paw"></i><br> I need a loving parent!`
+    descriptionTag.classList.add("list-group-item")
   }
   bioLeftDiv.append(ageTag, breedTag, descriptionTag)
 
   const detailsDiv = document.createElement("div")
-  detailsDiv.classList.add("bio-right", "card-text")
+  detailsDiv.classList.add("bio-right", "list-group", "list-group-flush")
   detailsDiv.innerHTML = 
-  `<p>Spayed? ${dog.details["spayed_neutered"]}</p>
-  <p>House trained? ${dog.details["house_trained"]}</p>
-  <p>Special needs? ${dog.details["special_needs"]}</p>
-  <p>Shots current? ${dog.details["shots_current"]}</p>`
+  `<p class="list-group-item"><i class="fas fa-paw"></i> <b>Is ${dog.name}</b> <i class="fas fa-paw"></i></p>
+  <p class="list-group-item-q"><b>Spayed?</b> ${dog.details["spayed_neutered"]}</p>
+  <p class="list-group-item-q"><b>House trained?</b> ${dog.details["house_trained"]}</p>
+  <p class="list-group-item-q"><b>Special needs?</b> ${dog.details["special_needs"]}</p>
+  <p class="list-group-item-q"><b>Shots current?</b> ${dog.details["shots_current"]}</p>`
 
   bioDiv.append(nameTag, bioLeftDiv, detailsDiv)
   photoandbioDiv.append(image, bioDiv)

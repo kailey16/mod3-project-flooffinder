@@ -10,7 +10,7 @@ a {color: black !important;}
 html,body{
 background-size: cover;
 background-repeat: no-repeat;
-background-color: #f2e3c9 !important;
+background-color: white !important;
 height: 100%;
 font-family: 'Numans', sans-serif;
 }
@@ -23,18 +23,23 @@ font-family: 'Numans', sans-serif;
 
 #pet-button {
     float: right;
-    margin: 40px 50px 0 0;
+    margin: 20px 200px 0 0;
 }
 
 /* title banner */
 #title-banner {
     background-color: #7ecfc0;
+    /* text-align: center; */
+    height: 130px;
+    padding-top: 20px;
+    padding-left: 550px;
 }
 
-
+#brandname {
+    display: inline;
+}
 
 #panel-container {
-    margin: 30px;
     padding: 50px;
 }
 
@@ -126,6 +131,7 @@ margin-left: 4px;
 #welcome-banner {
   background: #f2e3c9;
   height: 300px;
+  padding-top: 50px;
 }
 .hidden {
   opacity:0;
@@ -213,11 +219,11 @@ margin-left: 4px;
 
 
 
-
-
 /* Dog Div CSS */
+
+
 #dog-div {
-    background-color: rgb(250, 213, 201) !important;
+    background-color: #fbc99d !important;
     width: 600px;
     height: auto;
     margin-left: 350px;
@@ -241,18 +247,34 @@ margin-left: 4px;
 .bio-right {
     float: right;
     text-align: left;    
-    margin: 20px 10px 0px 0px;
-    background-color: white;
-    padding: 10px 10px 0px 10px;
+    margin: 20px 35px 0px 0px;
 }
 .bio-left {
     float: left;
     text-align: left;
-    width: 285px;
+    width: 270px;
     height: auto;
-    margin: 30px 0px 0px 20px;
+    margin: 20px 0 0 40px;
+}
+.list-group-item {
+    background-color: #f2e3c9 !important;;
+    color: #992e24;
 }
 
+.list-group-item-q {
+    background-color: #fff6da !important;;
+    opacity: 0.8;
+    color: #992e24;
+    padding: 3px 7px 3px 7px;
+    margin: 0;
+}
+
+.detail-title {
+    display: inline;
+}
+.dog-detail {
+    display: inline;
+}
 
 
 /* Agency tag CSS */
