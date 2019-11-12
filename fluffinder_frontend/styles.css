@@ -10,9 +10,28 @@ a {color: black !important;}
 html,body{
 background-size: cover;
 background-repeat: no-repeat;
+background-color: #f2e3c9 !important;
 height: 100%;
 font-family: 'Numans', sans-serif;
 }
+
+
+/* Navbar */
+.navbar {
+    background-color: #7ecfc0;
+}
+
+#pet-button {
+    float: right;
+    margin: 40px 50px 0 0;
+}
+
+/* title banner */
+#title-banner {
+    background-color: #7ecfc0;
+}
+
+
 
 #panel-container {
     margin: 30px;
@@ -105,7 +124,7 @@ margin-left: 4px;
 
 /* welcome banner CSS */
 #welcome-banner {
-  background: #FCBBA5;
+  background: #f2e3c9;
   height: 300px;
 }
 .hidden {
@@ -115,7 +134,7 @@ margin-left: 4px;
   font-family: 'Covered By Your Grace';
   font-size:4em;
   text-align:center;
-  height: 350px;
+  height: 300px;
   width:600px;
   display:block;
   position: absolute;

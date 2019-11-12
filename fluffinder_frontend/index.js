@@ -23,7 +23,8 @@ function loginHandler(event) {
     .then(resp => {
         currentUser = resp
         renderDogCard()
-    })  
+    })
+    .catch(() => alert("Please enter the valid username."))
 }
 
 function signupHandler(event) {
