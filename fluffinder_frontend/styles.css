@@ -41,6 +41,8 @@ font-family: 'Numans', sans-serif;
 
 #panel-container {
     padding: 50px;
+    background: #f2e3c9;
+
 }
 
 .container{
@@ -161,6 +163,10 @@ margin-left: 4px;
 
 
 /* Gallery container CSS */
+
+#login-form-container {
+  background-color: #7ecfc0 !important;
+}
 
 #gallery-container { 
     box-sizing: border-box; 
@@ -321,6 +327,9 @@ margin-left: 4px;
     background: rgba(0, 0, 0, 0.6);
   }
   .modal-guts {
+    background-color: #7ecfc0;
+    text-align: center;
+    font-family: 'Covered By Your Grace';
     position: absolute;
     top: 0;
     left: 0;
@@ -377,3 +386,14 @@ margin-left: 4px;
     font-size: 1.3rem;
   }
 
+  .card-image-top {
+  font-family: 'Covered By Your Grace';
+  max-width:100%;
+  max-height:100%;
+  }
+
+  #petContainer {
+    padding: auto;
+    text-align: center;
+    display: inline-block;
+  }
