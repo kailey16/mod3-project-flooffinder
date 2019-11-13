@@ -22,10 +22,10 @@ a {color: black !important;}
 /* title banner */
 #title-banner {
     background-color: #7ecfc0;
-    /* text-align: center; */
     height: 130px;
     padding-top: 20px;
     padding-left: 550px;
+    
 }
 
 #brandname {
@@ -126,8 +126,8 @@ margin-left: 4px;
 /* welcome banner CSS */
 #welcome-banner {
   background: #f2e3c9;
-  height: 300px;
-  padding-top: 50px;
+  height: 220px;
+  /* padding-top: 50px; */
 }
 .hidden {
   opacity:0;
@@ -146,6 +146,7 @@ margin-left: 4px;
   left:0;
   right:0;
   margin:auto;
+  padding-top: 15px;
 }
 .console-underscore {
   display:inline-block;
