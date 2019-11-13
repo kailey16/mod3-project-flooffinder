@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", function(){
 
 function loginHandler(event) {
     event.preventDefault()
-    document.getElementById("title-banner").style.display=""
     fetch('http://localhost:3000/login', {
         method: 'POST',
         headers: {
@@ -29,6 +28,8 @@ function loginHandler(event) {
         renderDogCard()
         document.getElementById("welcome-banner").remove()
         document.getElementById("gallery-container").remove()
+        document.getElementById("title-banner").style.display=""
+
     })
     .catch(() => alert("Please enter the valid username."))
 }
@@ -54,6 +55,7 @@ function signupHandler(event) {
         renderDogCard()
         document.getElementById("welcome-banner").remove()
         document.getElementById("gallery-container").remove()
+        document.getElementById("title-banner").style.display=""
     })
 }
 
