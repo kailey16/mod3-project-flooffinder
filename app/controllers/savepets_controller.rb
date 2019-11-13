@@ -1,9 +1,5 @@
 class SavepetsController < ApplicationController
-  
-  def show
-
-  end
-
+ 
   def index
     render json: Savepet.all
   end

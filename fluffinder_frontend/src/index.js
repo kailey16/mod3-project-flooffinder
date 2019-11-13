@@ -6,6 +6,7 @@ petButton.classList.add('grow')
 let currentUser
 
 document.addEventListener("DOMContentLoaded", function(){
+    welcomeBanner()
     signUpButton.addEventListener("click", createUser)
     loginForm.addEventListener("submit", loginHandler)
 })

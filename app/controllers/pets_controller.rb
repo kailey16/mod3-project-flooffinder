@@ -9,9 +9,7 @@ class PetsController < ApplicationController
           except: [:created_at, :updated_at]
         }
       }
-    }
-
-    )
+    })
   end
 
   def show
@@ -23,8 +21,7 @@ class PetsController < ApplicationController
           except: [:created_at, :updated_at]
         }
       }
-    }
-    )
+    })
   end
 
 end

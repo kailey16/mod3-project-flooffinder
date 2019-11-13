@@ -1,9 +1,6 @@
-// document.addEventListener("DONContentLoaded", ()=>{})
-
-
 ////////// WELCOME BANNER
 
-(function welcomeBanner() {
+function welcomeBanner() {
   function consoleText(words, id, colors) {
     if (colors === undefined) colors = ['#fff'];
     var visible = true;
@@ -53,7 +50,7 @@
     }, 400)
   }
   consoleText(['Welcome to the Floof Finder!', 'These cute faces need your love!!!'], 'text',['#cd3b36','#cd3b36']);
-})()
+}
 
 
 
@@ -74,27 +71,49 @@ function renderDogCard() {
     })
 }
 
+
+
+
+
 function renderDog(dog) {
   currentDogName = dog.name;
 
   const panel = document.getElementById("panel-container")
   panel.innerHTML = ""
+  panel.classList.add("container")
+
+  const rowDiv = document.createElement("div")
+  rowDiv.classList.add("row")
+  panel.append(rowDiv)
+
+  const col1 = document.createElement("div")
+  const col2 = document.createElement("div")
+  const col3 = document.createElement("div")
+  col1.classList.add("col")
+  col2.classList.add("col")
+  col3.classList.add("col")
+  rowDiv.append(col1, col2, col3)
+
+
   const dogDiv = document.createElement("div")
   dogDiv.id = "dog-div"
   dogDiv.classList.add("card")
+  col2.append(dogDiv)
 
-  /// left right arrows
+  //// left right arrows
   const leftArrow = document.createElement("div")
   leftArrow.id = "left-arrow"
   leftArrow.classList.add('grow')
   leftArrow.innerHTML = `<i class="fas fa-chevron-left fa-4x"></i>`
   leftArrow.addEventListener("click", leftArrowClicked)
+  col1.append(leftArrow)
+
   const rightArrow = document.createElement("div")
   rightArrow.id = "right-arrow"
   rightArrow.classList.add('grow')
   rightArrow.innerHTML = `<i class="fas fa-chevron-right fa-4x"></i>`
   rightArrow.addEventListener("click", rightArrowClicked)
-  panel.append(leftArrow, rightArrow)
+  col3.append(rightArrow)  
 
 
   /// savepet icon
@@ -102,7 +121,7 @@ function renderDog(dog) {
   savepetIcon.innerHTML = `<i class="fas fa-heart fa-2x"></i><i class="fas fa-dog fa-5x fa-flip-horizontal"></i>`
   savepetIcon.id = "save-pet-icon"
   savepetIcon.classList.add("grow")
-  panel.append(savepetIcon)
+  col3.append(savepetIcon)
 
   /// card elements
   const toptaps = document.createElement("div")
@@ -176,7 +195,6 @@ function renderDog(dog) {
   bioDiv.append(nameTag, bioLeftDiv, detailsDiv)
   photoandbioDiv.append(image, bioDiv)
   dogDiv.append(photoandbioDiv)
-  panel.append(dogDiv)
 }
 
 
@@ -218,7 +236,7 @@ function rightArrowClicked(event) {
 
 function agencytapClicked(event) {
   event.preventDefault()
-  document.querySelector(".agency-top-tap").style = "background-color: #fff6da; border-radius: 5px;"
+  document.querySelector(".agency-top-tap").style = "background-color: #f2e3c9; border-radius: 5px;"
 
   const dogBioDiv = document.getElementById("dog-bio")
 
