@@ -12,8 +12,15 @@ body {
 }
 
 
+<<<<<<< HEAD
 
 
+=======
+#pet-button {
+    float: right;
+    margin: 20px 200px 0 0;
+}
+>>>>>>> e3e9a1315a970258b5a274d6bb2a9e9798efe88b
 
 /* title banner */
 #title-banner {
@@ -170,7 +177,7 @@ margin-left: 4px;
 
 #gallery-container { 
     box-sizing: border-box; 
-    height: 400px;
+    height: 415px
     margin: 0;
     padding: 0; 
 }
@@ -187,7 +194,7 @@ margin-left: 4px;
     list-style-type: none;
     margin: 0;
     padding: 0;
-    height: 400px;
+    height: 415px;
 }
 
 #gallery-container ul img {
@@ -288,15 +295,11 @@ margin-left: 4px;
 
 .detail-title {
     display: inline;
-    margin: 0 50px 0 50px;
+    margin: 0 40px 0 40px;
     padding: 10px 0 0 0;
 }
 .dog-detail {
-  background-color: #fff6da !important;;
-  opacity: 0.8;
-  color: #992e24;
-  padding: 7px 0 7px 0;
-  margin: 0;
+    display: inline;
 }
 
 
@@ -358,19 +361,7 @@ margin-left: 4px;
     padding: 20px 50px 20px 20px;
   }
   
-  .modal-card-body {
-    background-color: #fbc99d !important;
-  }
-
-  .modal-pet-name {
-    font-size: 25px !important;
-  }
-
-  .modal-button {
-    font-size: 13px !important;
-    font-family: 'Overpass Mono', monospace;
-    color: white !important;
-  }
+  
   
   * {
     box-sizing: border-box;
@@ -393,7 +384,7 @@ margin-left: 4px;
     
     z-index: 1;
     
-    top: 25px;
+    top: 10px;
     
     /* needs to look OK with or without scrollbar */
     right: 20px;
@@ -401,9 +392,8 @@ margin-left: 4px;
     border: 0;
     background: black;
     color: white;
-    padding: 3px;
-    font-size: 15px;
-    font-family: 'Overpass Mono', monospace;
+    padding: 5px 10px;
+    font-size: 1.3rem;
   }
 
   /* .card-image-top {
@@ -416,8 +406,7 @@ margin-left: 4px;
 
  .pet-box {
   height: 375px;
-  margin-top: 70px;
-  border-style: none;
+  margin-top: 100px;
 }
 
 /* .card img {
@@ -446,5 +435,9 @@ margin-left: 4px;
     padding: auto;
     text-align: center;
     display: inline-block;
+    
   }
 
+  .card-body {
+    margin-top:10px;
+  }
