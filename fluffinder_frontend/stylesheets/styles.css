@@ -48,6 +48,7 @@ font-family: 'Numans', sans-serif;
 .container{
 height: 100%;
 align-content: center;
+font-family: 'Overpass Mono', monospace;
 }
 
 .card{
@@ -227,6 +228,7 @@ margin-left: 4px;
 #save-pet-icon {
   float: right;
   color: #7ecfc0;
+  margin: 50px 50px 0 0;
 }
 
 
@@ -284,10 +286,14 @@ margin-left: 4px;
 
 .detail-title {
     display: inline;
+    margin: 0 40px 0 40px;
+    padding: 10px 0 0 0;
 }
 .dog-detail {
     display: inline;
 }
+
+
 
 
 

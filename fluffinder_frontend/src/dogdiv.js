@@ -60,6 +60,7 @@
 ////////// PANEL CONTAINER DOG RENDERING
 let totalDogNum;
 let currentDogId = 1;
+let currentDogName;
 
 function renderDogCard() {
 
@@ -74,6 +75,8 @@ function renderDogCard() {
 }
 
 function renderDog(dog) {
+  currentDogName = dog.name;
+
   const panel = document.getElementById("panel-container")
   panel.innerHTML = ""
   const dogDiv = document.createElement("div")
@@ -94,7 +97,7 @@ function renderDog(dog) {
 
   /// savepet icon
   const savepetIcon = document.createElement("div")
-  savepetIcon.innerHTML = `<i class="fas fa-dog fa-6x fa-flip-horizontal"></i><i class="fas fa-heart fa-3x"></i>`
+  savepetIcon.innerHTML = `<i class="fas fa-heart fa-2x"></i><i class="fas fa-dog fa-4x fa-flip-horizontal"></i>`
   savepetIcon.id = "save-pet-icon"
   panel.append(savepetIcon)
 
@@ -103,10 +106,10 @@ function renderDog(dog) {
   toptaps.classList.add("card-header")
   toptaps.innerHTML = `
     <ul class="nav nav-tabs card-header-tabs">
-      <li class="nav-item">
+      <li class="nav-item floof-top-tap">
         <a class="nav-link active" id="floof-tap">Floof</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item agency-top-tap">
         <a class="nav-link" id="agency">Agency</a>
       </li>
     </ul>`
@@ -210,7 +213,8 @@ function rightArrowClicked(event) {
 
 function agencytapClicked(event) {
   event.preventDefault()
-  console.log("Agency clicked")
+  document.querySelector(".agency-top-tap").style = "background-color: #fff6da; border-radius: 5px;"
+
   const dogBioDiv = document.getElementById("dog-bio")
 
   fetch(`http://localhost:3000/pets/${currentDogId}`)
@@ -248,7 +252,7 @@ function dogsavedropped(event) {
   .then(res => res.json())
   .then(user => {
     if (user.savepets.map((savepet)=>savepet["pet_id"]).includes(currentDogId)) {
-      alert("You already saved this fluff!")}
+      alert(`You already saved ${currentDogName}😂`)}
     else {
     fetch('http://localhost:3000/savepets', {
       method: 'POST',
@@ -260,7 +264,7 @@ function dogsavedropped(event) {
           "pet_id" : `${currentDogId}`
       })
     })
-    .then(()=>alert(`Thank you for saving this fluff!`))
+    .then(()=>alert(`Thank you for saving ❤️️${currentDogName} ❤️️`))
     }
   })
 }
