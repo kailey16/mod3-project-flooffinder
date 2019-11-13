@@ -8,15 +8,9 @@ a {color: black !important;}
 }
 
 
-
-/* Navbar */
-.navbar {
-    background-color: #7ecfc0;
-}
-
 #pet-button {
     float: right;
-    margin: 20px 200px 0 0;
+    margin: 20px 305px 0 0;
 }
 
 /* title banner */
@@ -287,11 +281,15 @@ margin-left: 4px;
 
 .detail-title {
     display: inline;
-    margin: 0 40px 0 40px;
+    margin: 0 50px 0 50px;
     padding: 10px 0 0 0;
 }
 .dog-detail {
-    display: inline;
+  background-color: #fff6da !important;;
+  opacity: 0.8;
+  color: #992e24;
+  padding: 7px 0 7px 0;
+  margin: 0;
 }
 
 
@@ -443,6 +441,3 @@ margin-left: 4px;
     display: inline-block;
   }
 
-  /* .card-body {
-    margin-top:10px;
-  } */

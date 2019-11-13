@@ -99,7 +99,7 @@ function renderDog(dog) {
 
   /// savepet icon
   const savepetIcon = document.createElement("div")
-  savepetIcon.innerHTML = `<i class="fas fa-heart fa-3x"></i><i class="fas fa-dog fa-6x fa-flip-horizontal"></i>`
+  savepetIcon.innerHTML = `<i class="fas fa-heart fa-2x"></i><i class="fas fa-dog fa-5x fa-flip-horizontal"></i>`
   savepetIcon.id = "save-pet-icon"
   savepetIcon.classList.add("grow")
   panel.append(savepetIcon)
@@ -187,6 +187,7 @@ function renderDog(dog) {
 function leftArrowClicked(event) {
   currentDogId--
   if (currentDogId === 0) {
+    currentDogId++
     alert("You are looking at the first fluff!")
   } else {
   fetch(`http://localhost:3000/pets/${currentDogId}`)
@@ -202,6 +203,7 @@ function leftArrowClicked(event) {
 function rightArrowClicked(event) {
   currentDogId++
   if (currentDogId === totalDogNum + 1) {
+    currentDogId--
     alert("You are looking at the last fluff!")
   } else {
   fetch(`http://localhost:3000/pets/${currentDogId}`)
@@ -226,11 +228,11 @@ function agencytapClicked(event) {
     dogBioDiv.classList.add("list-group", "list-group-flush", "agency-details")
 
     dogBioDiv.innerHTML = `
-    <div class="list-group-item detail-title"><i class="fas fa-bone"></i> <b>Email</b> <i class="fas fa-bone"></i><p class="list-group-item-q">${dog["contact"]["email"]}</p></div>
+    <div class="list-group-item detail-title"><i class="fas fa-bone"></i> <b>Email</b> <i class="fas fa-bone"></i><p class="list-group-item dog-detail">${dog["contact"]["email"]}</p></div>
 
-    <div class="list-group-item detail-title"><i class="fas fa-bone"></i> <b>Phone Number</b> <i class="fas fa-bone"></i><p class="list-group-item-q">${dog["contact"]["phone"]}</p></div>
+    <div class="list-group-item detail-title"><i class="fas fa-bone"></i> <b>Phone Number</b> <i class="fas fa-bone"></i><p class="list-group-item dog-detail">${dog["contact"]["phone"]}</p></div>
 
-    <div class="list-group-item detail-title"><i class="fas fa-bone"></i> <b>Address</b> <i class="fas fa-bone"></i><p class="list-group-item-q">${dog["contact"]["address"]["address1"]}, ${dog["contact"]["address"]["city"]}, ${dog["contact"]["address"]["state"]} ${dog["contact"]["address"]["postcode"]}</p></div>
+    <div class="list-group-item detail-title"><i class="fas fa-bone"></i> <b>Address</b> <i class="fas fa-bone"></i><p class="list-group-item dog-detail">${dog["contact"]["address"]["address1"]} ${dog["contact"]["address"]["address2"]}, ${dog["contact"]["address"]["city"]}, ${dog["contact"]["address"]["state"]} ${dog["contact"]["address"]["postcode"]}</p></div>
     `;
     document.querySelector("#agency").addEventListener("click", agencytapClicked);
     document.querySelector("#floof-tap").addEventListener("click", flooftapClicked);
@@ -250,7 +252,6 @@ function flooftapClicked(event) {
 
 
 function dogsavedropped(event) {
-
   fetch(`http://localhost:3000/users/${currentUser.id}`)
   .then(res => res.json())
   .then(user => {
