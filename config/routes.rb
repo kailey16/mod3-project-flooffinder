@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :users, except: [:new, :edit]
+  resources :users, only: [:index, :show,:create]
 
-  resources :savepets, only: [:index, :create, :destroy]
+  resources :savepets, only: [:index, :create]
 
   resources :pets, only: [:index, :show]
 

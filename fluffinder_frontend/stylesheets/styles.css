@@ -4,15 +4,6 @@ body {
   background-color: #f2e3c9;
 }
 
-#brandname {
-    padding-top: 35px;
-    text-align: center;
-    font-family: 'Covered By Your Grace';
-    font-size: 75px;
-}
-
-
-
 
 /* title banner */
 #title-banner {
@@ -25,6 +16,9 @@ body {
   display: inline;
   width: 50vw;
   margin-left: 41vw;
+  padding-top: 35px;
+  font-family: 'Covered By Your Grace';
+  font-size: 75px;
 }
 
 #pet-button {
@@ -36,12 +30,17 @@ body {
 
 
 
-#panel-container {
-    padding: 50px;
-    background: #f2e3c9;
 
+/* panel container  */
+#panel-container {
+  padding: 50px;
+  background: #f2e3c9;
 }
 
+/* Login and signup forms */
+#login-form-container {
+  background-color: #7ecfc0 !important;
+}
 .container{
 height: 100%;
 align-content: center;
@@ -131,11 +130,12 @@ margin-left: 4px;
 #welcome-banner {
   background: #f2e3c9;
   height: 220px;
-  /* padding-top: 50px; */
 }
+
 .hidden {
   opacity:0;
 }
+
 .console-container {
   font-family: 'Covered By Your Grace';
   font-size:4em;
@@ -143,7 +143,6 @@ margin-left: 4px;
   height: 300px;
   width:600px;
   display:block;
-  /* position: absolute */
   color:white;
   top:0;
   bottom:0;
@@ -161,15 +160,12 @@ margin-left: 4px;
 
 
 
+
+
 /* Gallery container CSS */
-
-#login-form-container {
-  background-color: #7ecfc0 !important;
-}
-
 #gallery-container { 
     box-sizing: border-box; 
-    height: 415px
+    height: 415px;
     margin: 0;
     padding: 0; 
 }
@@ -207,6 +203,7 @@ margin-left: 4px;
 
 
 
+
 /* Left & Right arrows */
 #left-arrow {
     float: left;
@@ -235,9 +232,8 @@ margin-left: 4px;
 
 
 
+
 /* Dog Div CSS */
-
-
 #dog-div {
     background-color: #fbc99d !important;
     width: 600px;
@@ -304,31 +300,19 @@ margin: 0;
 
 
 
-
-
 /* Pets modal */
-
 .modal {
     /* This way it could be display flex or grid or whatever also. */
     display: block;
-    
     width: 600px;
     max-width: 100%;
-    
     height: 400px;
     max-height: 100%;
-    
     position: fixed;
-    
     z-index: 100;
-    
     left: 50%;
     top: 50%;
-    
     transform: translate(-50%, -50%);
-    
-    
-    
     background: white;
     box-shadow: 0 0 60px 10px rgba(0, 0, 0, 0.9);
   }
@@ -343,9 +327,9 @@ margin: 0;
     width: 100%;
     height: 100%;
     z-index: 50;
-    
     background: rgba(0, 0, 0, 0.6);
   }
+
   .modal-guts {
     background-color: #7ecfc0;
     text-align: center;
@@ -359,6 +343,51 @@ margin: 0;
     padding: 20px 50px 20px 20px;
   }
   
+  .modal .close-button {
+    position: absolute;
+    z-index: 1;
+    top: 25px;
+    /* needs to look OK with or without scrollbar */
+    right: 20px;
+    border: 0;
+    background: black;
+    color: white;
+    padding: 3px;
+    font-size: 15px;
+    font-family: 'Overpass Mono', monospace;
+  }
+  
+
+/* pet card in the modal */
+.pet-box {
+  height: 375px;
+  margin-top: 70px;
+  border-style: none;
+  padding: 10px;
+  background-color: #fbc99d !important;
+}
+
+.fill img {
+    flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100%
+}
+
+.fill {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.petContainer {
+    max-width: 100%;
+    max-height: 100%;
+    padding: auto;
+    text-align: center;
+    display: inline-block;
+}
+
   .modal-card-body {
     background-color: #fbc99d !important;
   }
@@ -374,6 +403,7 @@ margin: 0;
   }
   
   
+
   * {
     box-sizing: border-box;
     margin: 0;
@@ -389,52 +419,4 @@ margin: 0;
   h1 {
     margin: 0 0 20px 0;
   }
-  
-  .modal .close-button {
-    position: absolute;
-    
-    z-index: 1;
-    
-    top: 25px;
-    
-    /* needs to look OK with or without scrollbar */
-    right: 20px;
-    
-    border: 0;
-    background: black;
-    color: white;
-    padding: 3px;
-    font-size: 15px;
-    font-family: 'Overpass Mono', monospace;
-  }
 
-
-.pet-box {
-  height: 375px;
-  margin-top: 70px;
-  border-style: none;
-}
-
-
-
-.fill img {
-    flex-shrink: 0;
-    min-width: 100%;
-    min-height: 100%
-}
-
-.fill {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
-
-  .petContainer {
-    max-width: 100%;
-    max-height: 100%;
-    padding: auto;
-    text-align: center;
-    display: inline-block;
-    
-  }
