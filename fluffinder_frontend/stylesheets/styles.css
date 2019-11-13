@@ -165,7 +165,7 @@ margin-left: 4px;
 
 #gallery-container { 
     box-sizing: border-box; 
-    height: 400px;
+    height: 415px
     margin: 0;
     padding: 0; 
 }
@@ -182,7 +182,7 @@ margin-left: 4px;
     list-style-type: none;
     margin: 0;
     padding: 0;
-    height: 400px;
+    height: 415px;
 }
 
 #gallery-container ul img {
