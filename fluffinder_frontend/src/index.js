@@ -123,7 +123,7 @@ function renderModalCards() {
     fetch(`http://localhost:3000/users/${currentUser.id}`)
         .then(resp => resp.json())
         .then(user => {
-
+            document.getElementById('pet-cards').innerHTML = "";
             user.savepets.forEach(savepet => {
                 fetch(`http://localhost:3000/pets/${savepet["pet_id"]}`)
                 .then(res => res.json())
@@ -137,10 +137,10 @@ function renderModalCards() {
                     <div class="fill">
                     <img class="card-img-top" alt="Card image cap" src="${pet.photo[0].medium}">
                     </div>
-                    <div class="card-body">
-                     <h5 class="card-title">${pet.name}</h5>
-                     <a tabindex="0" class="btn btn-primary btn-danger " role="button" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="Email: ${pet["contact"]["email"]} Phone: ${pet["contact"]["phone"]} \n Address: ${pet["contact"]["address"]["address1"]}">Adoption info</a>
-                     <button id="${savepet.id}" class="btn btn-primary delete">Delete</button>
+                    <div class="card-body modal-card-body">
+                     <h5 class="card-title modal-pet-name">${pet.name}</h5>
+                     <a tabindex="0" class="btn btn-primary btn-info modal-button" role="button" data-toggle="popover" data-trigger="focus" title="Adoption Information" data-content="🐶Email: ${pet["contact"]["email"]} 🐶Phone: ${pet["contact"]["phone"]} 🐶Address: ${pet["contact"]["address"]["city"]}, ${pet["contact"]["address"]["state"]}">Adoption info</a>
+                     <button id="${savepet.id}" class="btn btn-secondary delete modal-button">Delete</button>
     
                      </div>
                     </div>
