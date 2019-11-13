@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function(){
     loginForm.addEventListener("submit", loginHandler)
 })
 
+
 function loginHandler(event) {
     event.preventDefault()
     fetch('http://localhost:3000/login', {
@@ -35,8 +36,8 @@ function loginHandler(event) {
     .catch(() => alert("Please enter the valid username."))
 }
 
-function signupHandler(event) {
 
+function signupHandler(event) {
     event.preventDefault()
 
     fetch('http://localhost:3000/users', {
@@ -59,6 +60,7 @@ function signupHandler(event) {
         document.getElementById("title-banner").style.display=""
     })
 }
+
 
 function createUser(event) {
     event.preventDefault()
@@ -95,13 +97,16 @@ function createUser(event) {
             <input type="submit" value="Submit" class="btn float-right login_btn">
         </div>
     </form>
-</div>`
+    </div>`
 
-let signUpForm = document.getElementById('sign-up-form')
+    let signUpForm = document.getElementById('sign-up-form');
     signUpForm.addEventListener("submit", signupHandler)
 }
 
- /* ----------------- PET BUTTON MODAL --------- */
+
+
+
+ /************ PET BUTTON MODAL ************/
 
  var modal = document.querySelector("#modal");
  var modalOverlay = document.querySelector("#modal-overlay");
@@ -119,7 +124,9 @@ let signUpForm = document.getElementById('sign-up-form')
    renderModalCards()
  });
 
-/************ RENDERING PET MODAL ******************/
+
+
+/************ RENDERING PET MODAL ************/
 
 let petCardContainer = document.getElementById('pet-cards')
 

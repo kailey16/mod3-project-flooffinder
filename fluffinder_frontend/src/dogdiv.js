@@ -1,5 +1,4 @@
 ////////// WELCOME BANNER
-
 function welcomeBanner() {
   function consoleText(words, id, colors) {
     if (colors === undefined) colors = ['#fff'];
@@ -72,8 +71,6 @@ function renderDogCard() {
 }
 
 
-
-
 function renderDog(dog) {
   currentDogName = dog.name;
 
@@ -92,7 +89,6 @@ function renderDog(dog) {
   col2.classList.add("col")
   col3.classList.add("col")
   rowDiv.append(col1, col2, col3)
-
 
   const dogDiv = document.createElement("div")
   dogDiv.id = "dog-div"
@@ -113,7 +109,6 @@ function renderDog(dog) {
   rightArrow.innerHTML = `<i class="fas fa-chevron-right fa-4x"></i>`
   rightArrow.addEventListener("click", rightArrowClicked)
   col3.append(rightArrow)  
-
 
   /// savepet icon
   const savepetIcon = document.createElement("div")
@@ -144,9 +139,7 @@ function renderDog(dog) {
   image.src = dog.photo[0]["medium"]
   image.id = "dog-image"
   image.draggable = true
-  // image.addEventListener("click", savepetHandler)
   image.addEventListener("dragend", dogsavedropped)
-
 
   const bioDiv = document.createElement("div")
   bioDiv.id = "dog-bio"
@@ -254,7 +247,6 @@ function agencytapClicked(event) {
   })
 }
 
-
 function flooftapClicked(event) {
   fetch(`http://localhost:3000/pets/${currentDogId}`)
   .then(res => res.json())
@@ -264,7 +256,6 @@ function flooftapClicked(event) {
     document.querySelector("#floof-tap").addEventListener("click", flooftapClicked);
   })
 }
-
 
 function dogsavedropped(event) {
   fetch(`http://localhost:3000/users/${currentUser.id}`)
