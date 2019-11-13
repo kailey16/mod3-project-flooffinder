@@ -10,5 +10,4 @@ Rails.application.routes.draw do
   post '/logout' => 'sessions#destroy'
   post '/savepets/:id' => 'savepets#destroy'
 
-
 end

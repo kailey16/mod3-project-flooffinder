@@ -55,7 +55,7 @@ function welcomeBanner() {
 
 ////////// PANEL CONTAINER DOG RENDERING
 let totalDogNum;
-let currentDogId = 1;
+let currentDogId;
 let currentDogName;
 
 function renderDogCard() {
@@ -72,6 +72,7 @@ function renderDogCard() {
 
 
 function renderDog(dog) {
+  currentDogId = dog.id;
   currentDogName = dog.name;
 
   const panel = document.getElementById("panel-container")
