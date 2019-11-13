@@ -96,7 +96,6 @@ function renderDog(dog) {
   const savepetIcon = document.createElement("div")
   savepetIcon.innerHTML = `<i class="fas fa-dog fa-6x fa-flip-horizontal"></i><i class="fas fa-heart fa-3x"></i>`
   savepetIcon.id = "save-pet-icon"
-  savepetIcon.addEventListener("dragenter", dogsavedropped)
   panel.append(savepetIcon)
 
   /// card elements
@@ -121,7 +120,9 @@ function renderDog(dog) {
   image.src = dog.photo[0]["medium"]
   image.id = "dog-image"
   image.draggable = true
-  image.addEventListener("click", savepetHandler)
+  // image.addEventListener("click", savepetHandler)
+  image.addEventListener("dragend", dogsavedropped)
+
 
   const bioDiv = document.createElement("div")
   bioDiv.id = "dog-bio"
@@ -242,21 +243,24 @@ function flooftapClicked(event) {
 
 
 function dogsavedropped(event) {
-  event.preventDefault()
-  debugger
-  if (currentUser.savepets.map((savepet)=>savepet["pet_id"]).includes(currentDogId)) {
-    alert("You already saved this fluff!")}
-  else {
-  fetch('http://localhost:3000/savepets', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-        "user_id" : `${currentUser.id}`,
-        "pet_id" : `${currentDogId}`
+
+  fetch(`http://localhost:3000/users/${currentUser.id}`)
+  .then(res => res.json())
+  .then(user => {
+    if (user.savepets.map((savepet)=>savepet["pet_id"]).includes(currentDogId)) {
+      alert("You already saved this fluff!")}
+    else {
+    fetch('http://localhost:3000/savepets', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+          "user_id" : `${currentUser.id}`,
+          "pet_id" : `${currentDogId}`
+      })
     })
+    .then(()=>alert(`Thank you for saving this fluff!`))
+    }
   })
-  .then(()=>alert(`Thank you for saving this fluff!`))
-  }
 }
