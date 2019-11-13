@@ -86,10 +86,12 @@ function renderDog(dog) {
   /// left right arrows
   const leftArrow = document.createElement("div")
   leftArrow.id = "left-arrow"
+  leftArrow.classList.add('grow')
   leftArrow.innerHTML = `<i class="fas fa-chevron-left fa-4x"></i>`
   leftArrow.addEventListener("click", leftArrowClicked)
   const rightArrow = document.createElement("div")
   rightArrow.id = "right-arrow"
+  rightArrow.classList.add('grow')
   rightArrow.innerHTML = `<i class="fas fa-chevron-right fa-4x"></i>`
   rightArrow.addEventListener("click", rightArrowClicked)
   panel.append(leftArrow, rightArrow)
