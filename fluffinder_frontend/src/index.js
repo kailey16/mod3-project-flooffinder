@@ -2,6 +2,7 @@ let signUpButton = document.getElementById('sign_up_button')
 let loginForm = document.getElementById('login-form')
 let submitForm = document.getElementById('submit-form')
 let petButton = document.getElementById("pet-button");
+petButton.classList.add('grow')
 let currentUser
 
 document.addEventListener("DOMContentLoaded", function(){
@@ -11,7 +12,6 @@ document.addEventListener("DOMContentLoaded", function(){
 
 function loginHandler(event) {
     event.preventDefault()
-    document.getElementById("title-banner").style.display=""
     fetch('http://localhost:3000/login', {
         method: 'POST',
         headers: {
@@ -28,6 +28,8 @@ function loginHandler(event) {
         renderDogCard()
         document.getElementById("welcome-banner").remove()
         document.getElementById("gallery-container").remove()
+        document.getElementById("title-banner").style.display=""
+
     })
     .catch(() => alert("Please enter the valid username."))
 }
@@ -53,6 +55,7 @@ function signupHandler(event) {
         renderDogCard()
         document.getElementById("welcome-banner").remove()
         document.getElementById("gallery-container").remove()
+        document.getElementById("title-banner").style.display=""
     })
 }
 

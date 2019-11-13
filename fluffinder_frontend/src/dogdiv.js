@@ -86,10 +86,12 @@ function renderDog(dog) {
   /// left right arrows
   const leftArrow = document.createElement("div")
   leftArrow.id = "left-arrow"
+  leftArrow.classList.add('grow')
   leftArrow.innerHTML = `<i class="fas fa-chevron-left fa-4x"></i>`
   leftArrow.addEventListener("click", leftArrowClicked)
   const rightArrow = document.createElement("div")
   rightArrow.id = "right-arrow"
+  rightArrow.classList.add('grow')
   rightArrow.innerHTML = `<i class="fas fa-chevron-right fa-4x"></i>`
   rightArrow.addEventListener("click", rightArrowClicked)
   panel.append(leftArrow, rightArrow)
@@ -99,6 +101,7 @@ function renderDog(dog) {
   const savepetIcon = document.createElement("div")
   savepetIcon.innerHTML = `<i class="fas fa-heart fa-3x"></i><i class="fas fa-dog fa-6x fa-flip-horizontal"></i>`
   savepetIcon.id = "save-pet-icon"
+  savepetIcon.classList.add("grow")
   panel.append(savepetIcon)
 
   /// card elements
