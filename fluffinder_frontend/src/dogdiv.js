@@ -101,6 +101,7 @@ function renderDog(dog) {
   const savepetIcon = document.createElement("div")
   savepetIcon.innerHTML = `<i class="fas fa-heart fa-3x"></i><i class="fas fa-dog fa-6x fa-flip-horizontal"></i>`
   savepetIcon.id = "save-pet-icon"
+  savepetIcon.classList.add("grow")
   panel.append(savepetIcon)
 
   /// card elements

@@ -2,6 +2,7 @@ let signUpButton = document.getElementById('sign_up_button')
 let loginForm = document.getElementById('login-form')
 let submitForm = document.getElementById('submit-form')
 let petButton = document.getElementById("pet-button");
+petButton.classList.add('grow')
 let currentUser
 
 document.addEventListener("DOMContentLoaded", function(){
