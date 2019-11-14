@@ -173,12 +173,44 @@ function renderDog(dog) {
 
   const detailsDiv = document.createElement("div")
   detailsDiv.classList.add("bio-right", "list-group", "list-group-flush")
-  detailsDiv.innerHTML = 
-  `<p class="list-group-item"><i class="fas fa-paw"></i> <b>Am I</b> <i class="fas fa-paw"></i></p>
-  <p class="list-group-item-q"><b>Spayed?</b> ${dog.details["spayed_neutered"]}</p>
-  <p class="list-group-item-q"><b>House trained?</b> ${dog.details["house_trained"]}</p>
-  <p class="list-group-item-q"><b>Special needs?</b> ${dog.details["special_needs"]}</p>
-  <p class="list-group-item-q"><b>Shots current?</b> ${dog.details["shots_current"]}</p>`
+
+  const amI = document.createElement("p")
+  amI.classList.add("list-group-item")
+  amI.innerHTML = `<i class="fas fa-paw"></i> <b>Am I</b> <i class="fas fa-paw"></i>`
+
+  const spay = document.createElement("p")
+  spay.classList.add("list-group-item-q")
+  if (dog.details["spayed_neutered"]) {
+    spay.innerHTML = `<b>Spayed?</b> <i class="fas fa-check"></i>`
+  } else {spay.innerHTML = `<b>Spayed?</b> <i class="fas fa-times"></i>`}
+
+  const houset = document.createElement("p")
+  houset.classList.add("list-group-item-q")
+  if (dog.details["house_trained"]) {
+    houset.innerHTML = `<b>House trained?</b> <i class="fas fa-check"></i>`
+  } else {houset.innerHTML = `<b>House trained?</b> <i class="fas fa-times"></i>`}
+
+  const special = document.createElement("p")
+  special.classList.add("list-group-item-q")
+  if (dog.details["special_needs"]) {
+    special.innerHTML = `<b>Special needs?</b> <i class="fas fa-check"></i>`
+  } else {special.innerHTML = `<b>Special needs?</b> <i class="fas fa-times"></i>`}
+
+  const shots = document.createElement("p")
+  shots.classList.add("list-group-item-q")
+  if (dog.details["shots_current"]) {
+    shots.innerHTML = `<b>Shots current?</b> <i class="fas fa-check"></i>`
+  } else {shots.innerHTML = `<b>Shots current?</b> <i class="fas fa-times"></i>`}
+
+
+  detailsDiv.append(amI, spay, houset, special, shots)
+
+  // detailsDiv.innerHTML = 
+  // `<p class="list-group-item"><i class="fas fa-paw"></i> <b>Am I</b> <i class="fas fa-paw"></i></p>
+  // <p class="list-group-item-q"><b>Spayed?</b> ${dog.details["spayed_neutered"]}</p>
+  // <p class="list-group-item-q"><b>House trained?</b> ${dog.details["house_trained"]}</p>
+  // <p class="list-group-item-q"><b>Special needs?</b> ${dog.details["special_needs"]}</p>
+  // <p class="list-group-item-q"><b>Shots current?</b> ${dog.details["shots_current"]}</p>`
 
   bioDiv.append(nameTag, bioLeftDiv, detailsDiv)
   photoandbioDiv.append(image, bioDiv)

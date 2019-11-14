@@ -259,14 +259,15 @@ margin-left: 4px;
 .bio-right {
     float: right;
     text-align: left;    
-    margin: 20px 35px 0px 0px;
+    width: 200px;
+    margin: 20px 44px 0px 0px;
 }
 .bio-left {
     float: left;
     text-align: left;
     width: 270px;
     height: auto;
-    margin: 20px 0 0 35px;
+    margin: 20px 0 0 43px;
 }
 
 .list-group-item {
