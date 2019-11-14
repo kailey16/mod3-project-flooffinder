@@ -1,15 +1,15 @@
-let signUpButton = document.getElementById('sign_up_button')
-let loginForm = document.getElementById('login-form')
-let submitForm = document.getElementById('submit-form')
-let petButton = document.getElementById("pet-button");
-petButton.classList.add('grow')
-let currentUser
-
 document.addEventListener("DOMContentLoaded", function(){
     welcomeBanner()
     signUpButton.addEventListener("click", createUser)
     loginForm.addEventListener("submit", loginHandler)
 })
+
+const signUpButton = document.getElementById('sign_up_button');
+const loginForm = document.getElementById('login-form');
+const submitForm = document.getElementById('submit-form');
+const petButton = document.getElementById("pet-button");
+petButton.classList.add('grow');
+let currentUser;
 
 
 function loginHandler(event) {
@@ -25,13 +25,11 @@ function loginHandler(event) {
     })
     .then(resp => resp.json())
     .then(resp => {
-
         currentUser = resp
         renderDogCard()
         document.getElementById("welcome-banner").remove()
         document.getElementById("gallery-container").remove()
         document.getElementById("title-banner").style.display=""
-
     })
     .catch(() => alert("Please enter the valid username."))
 }
@@ -108,9 +106,9 @@ function createUser(event) {
 
  /************ PET BUTTON MODAL ************/
 
- var modal = document.querySelector("#modal");
- var modalOverlay = document.querySelector("#modal-overlay");
- var closeButton = document.querySelector("#close-button");
+ const modal = document.querySelector("#modal");
+ const modalOverlay = document.querySelector("#modal-overlay");
+ const closeButton = document.querySelector("#close-button");
  
  
  closeButton.addEventListener("click", function() {
@@ -160,9 +158,9 @@ function renderModalCards() {
                       $('[data-toggle="popover"]').popover();
                     });
         
-                    let modalContainer = document.getElementById('pet-cards')
+                    const modalContainer = document.getElementById('pet-cards')
                     modalContainer.append(petContainer)
-                    let dButton = document.getElementById(savepet.id)
+                    const dButton = document.getElementById(savepet.id)
                     dButton.addEventListener("click", deleteButton)
                 })
             })
@@ -171,7 +169,7 @@ function renderModalCards() {
 
 
 function deleteButton(event) {
-    let savepetId = event.target.id
+    const savepetId = event.target.id
     fetch(`http://localhost:3000/savepets/${savepetId}`, {
         method: 'POST',
         headers: {

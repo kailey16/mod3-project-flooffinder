@@ -155,15 +155,10 @@ function renderDog(dog) {
   ageTag.innerHTML = `<b>AGE</b> <i class="fas fa-paw"></i> ${dog.age}`
   ageTag.classList.add("list-group-item")
 
-  const breedTag = document.createElement("div")
-  if (dog.breed != null) {
-    breedTag.innerHTML = `<b>BREED</b> <i class="fas fa-paw"></i> ${dog.breed}`
-    breedTag.classList.add("list-group-item")
-  }
-  else {
-    breedTag.innerHTML = `<b>BREED</b> <i class="fas fa-paw"></i> unknown`
-    breedTag.classList.add("list-group-item")
-  }
+  const genderTag = document.createElement("div")
+  genderTag.innerHTML = `<b>GENDER</b> <i class="fas fa-paw"></i> ${dog.gender}`
+  genderTag.classList.add("list-group-item")
+  
 
   const descriptionTag = document.createElement("div")
   if (dog.description != null) {
@@ -174,7 +169,7 @@ function renderDog(dog) {
     descriptionTag.innerHTML = `<b>DESCRIPTION</b> <i class="fas fa-paw"></i><br> I need a loving parent!`
     descriptionTag.classList.add("list-group-item")
   }
-  bioLeftDiv.append(ageTag, breedTag, descriptionTag)
+  bioLeftDiv.append(ageTag, genderTag, descriptionTag)
 
   const detailsDiv = document.createElement("div")
   detailsDiv.classList.add("bio-right", "list-group", "list-group-flush")
@@ -236,13 +231,35 @@ function agencytapClicked(event) {
   fetch(`http://localhost:3000/pets/${currentDogId}`)
   .then(res => res.json())
   .then(dog => {
+    dogBioDiv.innerHTML = ""
     dogBioDiv.classList.add("list-group", "list-group-flush", "agency-details")
+    const info = [dog["contact"]["email"], dog["contact"]["phone"], dog["contact"]["address"]["address1"], dog["contact"]["address"]["address2"], dog["contact"]["address"]["city"], dog["contact"]["address"]["state"], dog["contact"]["address"]["postcode"]]
 
-    dogBioDiv.innerHTML = `
-    <div class="list-group-item detail-title"><i class="fas fa-bone"></i> <b>Email</b> <i class="fas fa-bone"></i><p class="list-group-item dog-detail">${dog["contact"]["email"]}</p></div>
-    <div class="list-group-item detail-title"><i class="fas fa-bone"></i> <b>Phone Number</b> <i class="fas fa-bone"></i><p class="list-group-item dog-detail">${dog["contact"]["phone"]}</p></div>
-    <div class="list-group-item detail-title"><i class="fas fa-bone"></i> <b>Address</b> <i class="fas fa-bone"></i><p class="list-group-item dog-detail">${dog["contact"]["address"]["address1"]} ${dog["contact"]["address"]["address2"]}, ${dog["contact"]["address"]["city"]}, ${dog["contact"]["address"]["state"]} ${dog["contact"]["address"]["postcode"]}</p></div>
-    `;
+    const email = document.createElement("div")
+    const phone = document.createElement("div")
+    const address = document.createElement("div")
+    dogBioDiv.append(email, phone, address)
+
+    email.classList.add("list-group-item", "detail-title")
+    phone.classList.add("list-group-item", "detail-title")
+    address.classList.add("list-group-item", "detail-title")
+
+    email.innerHTML = `<i class="fas fa-bone"></i> <b>Email</b> <i class="fas fa-bone"></i><p class="list-group-item dog-detail">${info[0]}</p>`
+
+    if (info[1] === null || info[1].trim() === "") {
+      phone.innerHTML = `<i class="fas fa-bone"></i> <b>Phone Number</b> <i class="fas fa-bone"></i><p class="list-group-item dog-detail">🐶</p>`
+    } else {
+      phone.innerHTML = `<i class="fas fa-bone"></i> <b>Phone Number</b> <i class="fas fa-bone"></i><p class="list-group-item dog-detail">${info[1]}</p>`
+    }
+
+    if (info[2] === null && info[3] === null) {
+      address.innerHTML = `<i class="fas fa-bone"></i> <b>Address</b> <i class="fas fa-bone"></i><p class="list-group-item dog-detail">${info[4]}, ${info[5]} ${info[6]}</p>`
+    } else if (info[3] === null) {
+      address.innerHTML = `<i class="fas fa-bone"></i> <b>Address</b> <i class="fas fa-bone"></i><p class="list-group-item dog-detail">${info[2]}, ${info[4]}, ${info[5]} ${info[6]}</p>`
+    } else {
+      address.innerHTML = `<i class="fas fa-bone"></i> <b>Address</b> <i class="fas fa-bone"></i><p class="list-group-item dog-detail">${info[2]} ${info[3]}, ${info[4]}, ${info[5]} ${info[6]}</p>`
+    }
+
     document.querySelector("#agency").addEventListener("click", agencytapClicked);
     document.querySelector("#floof-tap").addEventListener("click", flooftapClicked);
   })
