@@ -205,14 +205,6 @@ function renderDog(dog) {
 
 
   detailsDiv.append(amI, spay, houset, special, shots)
-
-  // detailsDiv.innerHTML = 
-  // `<p class="list-group-item"><i class="fas fa-paw"></i> <b>Am I</b> <i class="fas fa-paw"></i></p>
-  // <p class="list-group-item-q"><b>Spayed?</b> ${dog.details["spayed_neutered"]}</p>
-  // <p class="list-group-item-q"><b>House trained?</b> ${dog.details["house_trained"]}</p>
-  // <p class="list-group-item-q"><b>Special needs?</b> ${dog.details["special_needs"]}</p>
-  // <p class="list-group-item-q"><b>Shots current?</b> ${dog.details["shots_current"]}</p>`
-
   bioDiv.append(nameTag, bioLeftDiv, detailsDiv)
   photoandbioDiv.append(image, bioDiv)
   dogDiv.append(photoandbioDiv)
