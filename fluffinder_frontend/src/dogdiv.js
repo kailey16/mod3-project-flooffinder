@@ -117,6 +117,7 @@ function renderDog(dog) {
   savepetIcon.id = "save-pet-icon"
   savepetIcon.classList.add("grow")
   col3.append(savepetIcon)
+  savepetIcon.addEventListener("dragover", draggedOver)
 
   /// card elements
   const toptaps = document.createElement("div")
@@ -308,6 +309,8 @@ function flooftapClicked(event) {
 }
 
 function dogsavedropped(event) {
+  const image = event.target
+  if (image.dataset.ontarget === "true") {
   fetch(`http://localhost:3000/users/${currentUser.id}`)
   .then(res => res.json())
   .then(user => {
@@ -326,5 +329,12 @@ function dogsavedropped(event) {
     })
     .then(()=>alert(`Thank you for saving ❤️️${currentDogName} ❤️️`))
     }
+    image.dataset.ontarget = false;
   })
+  }
+}
+
+
+function draggedOver(event) {
+  document.getElementById("dog-image").dataset.ontarget = true
 }
