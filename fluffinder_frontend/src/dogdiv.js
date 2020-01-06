@@ -300,6 +300,8 @@ function flooftapClicked(event) {
   })
 }
 
+
+
 function dogsavedropped(event) {
   const image = event.target
   if (image.dataset.ontarget === "true") {
